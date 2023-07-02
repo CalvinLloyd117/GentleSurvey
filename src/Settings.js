@@ -404,8 +404,7 @@ export const CULTURAL_CATEGORIES = [
     { key: 5, text: "Latin, Central, and South American", color: "#FFE699" },
     { key: 6, text: "South Asian", color: "#FFE699" },
     { key: 7, text: "Middle Eastern", color: "#FFE699" },
-    { key: 8, text: "Other", color: "#FFE699" },
-    { key: 9, text: "Unsure", color: "#FFE699" }
+    { key: 8, text: "Other", color: "#FFE699" }
 
 ];
 
