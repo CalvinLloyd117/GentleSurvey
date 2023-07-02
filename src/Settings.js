@@ -390,8 +390,7 @@ export const AGE_CATEGORIES = [
     { key: 5, text: "40-44", color: "#FFE699" },
     { key: 6, text: "45-49", color: "#FFE699" },
     { key: 7, text: "50-59", color: "#FFE699" },
-    { key: 8, text: "60+", color: "#FFE699" },
-    { key: 9, text: "Other", color: "#FFE699" }
+    { key: 8, text: "60+", color: "#FFE699" }
 
 ];
 
@@ -404,7 +403,8 @@ export const CULTURAL_CATEGORIES = [
     { key: 5, text: "Latin, Central, and South American", color: "#FFE699" },
     { key: 6, text: "South Asian", color: "#FFE699" },
     { key: 7, text: "Middle Eastern", color: "#FFE699" },
-    { key: 8, text: "Other", color: "#FFE699" }
+    { key: 8, text: "Other", color: "#FFE699" },
+    { key: 9, text: "Unsure", color: "#FFE699" }
 
 ];
 
