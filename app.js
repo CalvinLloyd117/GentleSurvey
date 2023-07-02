@@ -10,7 +10,8 @@ Simple node server that can call to MONGODB ATLAS
 
 //Setup
 const port = process.env.PORT || 3002;
-const location = process.env.URI || `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.luzii.mongodb.net/?retryWrites=true&w=majority`;
+// const location = process.env.URI || `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.luzii.mongodb.net/?retryWrites=true&w=majority`;
+const location = `mongodb+srv://super_admin:${process.env.DB_PASSWORD}@cluster0.vckee38.mongodb.net/?retryWrites=true&w=majority`;
 const local = process.env.LOCAL_DEVELOPMENT || 'true';
 
 //create app
@@ -70,40 +71,42 @@ app.post("/ajax", (req, res) =>
     )
 })
 
-validatePassword=(pw)=>{
+function validatePassword(pw)
+{
 
-    var error="Your password must:  "
+    var error = "Your password must:  "
     var result = true;
-    if(!/[A-Z]/       .test(pw))
+    if (!/[A-Z]/.test(pw))
     {
-        error+="contain at least one capitol letter, "  
-        result=false;
+        error += "contain at least one capitol letter, "
+        result = false;
     }
-    if(!/[a-z]/       .test(pw))
+    if (!/[a-z]/.test(pw))
     {
-        error+="contain at least one lowercase letter, "
-        result=false;
+        error += "contain at least one lowercase letter, "
+        result = false;
     }
-    if(!/[0-9]/       .test(pw))
+    if (!/[0-9]/.test(pw))
     {
-        error+="contain at least one number, "
-        result=false;
+        error += "contain at least one number, "
+        result = false;
     }
-    if(!/[^A-Za-z0-9]/.test(pw))
+    if (!/[^A-Za-z0-9]/.test(pw))
     {
-        error+="contain at least one symbol, "
-        result=false;
+        error += "contain at least one symbol, "
+        result = false;
     }
-    if(pw.length<8)
+    if (pw.length < 8)
     {
-        error +="be at least 8 characters long."
-        result=false; 
+        error += "be at least 8 characters long."
+        result = false;
     }
-    
+
     var lastChar = error.slice(-2);
-    if (lastChar == ', ') {
+    if (lastChar == ', ')
+    {
         error = error.slice(0, -2);
-        error+="."
+        error += "."
     }
 
     return {
@@ -119,8 +122,9 @@ app.post("/register", (req, res) =>
     let password = req.body.password
     let passwordConfirm = req.body.passwordConfirm
 
+    var valid
     valid = validatePassword(password)
-    if(valid.result===false)
+    if (valid.result === false)
     {
         return res.status(500).json({ status: valid.error })
     }
@@ -129,7 +133,7 @@ app.post("/register", (req, res) =>
     {
         data = JSON.parse(data);
     }
-    
+
     collection.find({ ID: ID }).then((doc) =>
     {
         //first failure case, if a user already exists
@@ -141,7 +145,7 @@ app.post("/register", (req, res) =>
 
         //second failure case, if the passwrords dont't match
         //better to double check surver side.
-        else if(password!==passwordConfirm)
+        else if (password !== passwordConfirm)
         {
             console.log("password do not match", password_h)
             return res.status(500).json({ status: "password mismatch" })
@@ -156,11 +160,13 @@ app.post("/register", (req, res) =>
                 data: null
             }
 
-            collection.insert(newUser).then(() => {
-                return res.status(200).send("Success") })
+            collection.insert(newUser).then(() =>
+            {
+                return res.status(200).send("Success")
+            })
             // collection.insertOne({ ID: req.body.ID }, function (err, user)
             // {
-    
+
             //     if (bcrypt.compareSync(password, user.password))
             //     {
             //         //password did not match

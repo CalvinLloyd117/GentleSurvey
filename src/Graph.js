@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import * as d3 from 'd3';
 import ReactDOM from "react-dom";
 import { isEqual } from 'underscore';
-
-
 // Important consts:
-export var SVG_HEIGHT = window.innerHeight * 1;
+export var SVG_HEIGHT = window.innerHeight * 0.65;
 export var SVG_WIDTH = (window.innerWidth > 1140 ? window.innerWidth - 15 : window.innerWidth) - 60;
 export var MOBILE = (window.innerWidth < 500 || window.innerHeight < 500 ? true : false) // to detect small displays, requiring different render
 export var NODE_SIZE = MOBILE ? 20 : 30; // just internal size of node
@@ -65,6 +63,9 @@ class Graph extends Component
     });
     this.lastClickedNode = 0
     console.log("Mounting Graph", this.props)
+
+    // if (this.props.categories)
+
   }
 
   // handleCanvasResize = () =>
@@ -143,11 +144,13 @@ class Graph extends Component
         .style("opacity", (d) => (d.key === this.props.counter ? 0.65 : 1)); //current node has 0.65 opacity
     }
 
+    var color;
+
     v3d.append("circle")
       .attr("class", "Node_center")
       .attr("id", (d) => d.key)
       .attr("r", (d) => d.size)
-      .style("fill", (d) => d.color)
+      .style("fill", (d) => this.props.colorOveride === undefined || this.props.colorOveride === null ? d.color : d[this.props.colorOveride])
       .style("stroke", (d) => d.border)
       .style("stroke-width", "10px")
       //.on("touchstart", function(d){d3.event.preventDefault(); console.log(d)})
@@ -156,6 +159,7 @@ class Graph extends Component
       .on("touchend", (d) => { this.callback(d); })
       .on("click", (d) => { this.callback(d); });
 
+    console.log("Color Overide: ", this.props.colorOveride)
 
     v3d.append("circle")
       .attr("class", "Node_rel")
@@ -173,29 +177,30 @@ class Graph extends Component
       .attr("pointer-events", "none")
       .text((d) => d.name);
 
-      if(this.props.multiText === true)
+    if (this.props.multiText === true)
+    {
+      for (var i = 0; i < this.props.textToApply.length; i++)
       {
-        for(var i = 0; i< this.props.textToApply.length; i++)
-        {
-          v3d.append("text")
+        v3d.append("text")
           .attr("class", "float_text multi")
           .attr("text-anchor", "middle")
           .attr("dx", (MOBILE ? "1em" : "1.25em"))
           .attr("dy", (MOBILE ? "1.5em" : "1.25em"))
           .attr("pointer-events", "none")
-          .attr("y", 10+(i*11))
+          .attr("y", 10 + (i * 11))
           .text((d) => this.applyTextArray(d, this.props.textToApply, i));
-        }
       }
-      else{
-            v3d.append("text")
-      .attr("class", "float_text")
-      .attr("text-anchor", "middle")
-      .attr("dx", (MOBILE ? "1em" : "1.25em"))
-      .attr("dy", (MOBILE ? "1.5em" : "1.25em"))
-      .attr("pointer-events", "none")
-      .text((d) => this.applyText(d, this.props.textToApply, i));
-      }
+    }
+    else
+    {
+      v3d.append("text")
+        .attr("class", "float_text")
+        .attr("text-anchor", "middle")
+        .attr("dx", (MOBILE ? "1em" : "1.25em"))
+        .attr("dy", (MOBILE ? "1.5em" : "1.25em"))
+        .attr("pointer-events", "none")
+        .text((d) => this.applyText(d, this.props.textToApply, i));
+    }
     // v3d.append("text")
     //   .attr("class", "float_text")
     //   .attr("text-anchor", "middle")
@@ -206,11 +211,11 @@ class Graph extends Component
 
   };
 
-  applyTextArray = (d, key='age', i)=>
+  applyTextArray = (d, key = 'age', i) =>
   {
     return d[key][i]
   }
-  applyText = (d, key='age',) =>
+  applyText = (d, key = 'age',) =>
   {
     return d[key]
   }
@@ -488,11 +493,35 @@ class Graph extends Component
 
   }
 
+  containerClass = () =>
+  {
+    console.log("ContainerClass: ", this.props.extraHeight)
+    if (this.props.extraHeight !== undefined)
+    {
+      return true;
+    }
+    if (this.props.categories)
+    {
+      if (this.props.categories[0] !== undefined)
+      {
+        if (this.props.categories[0].height !== null)
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+      }
+    }
+
+
+  }
 
   render()
   {
     return (
-      <div className="container">
+      <div className={this.containerClass() === true ? "container withBoxes" : "container"}>
         <svg width="100%" height="100%" id="graphCanvas" ref={(e) => this.graphRef = e}>
           <g id="boxes">
             {(this.props.categories ? this.props.categories.map((category, i) => (

@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import
+{
+    // Route,
+    NavLink,
+    HashRouter
+} from "react-router-dom";
 
-class Thanks extends Component
+class Introduction extends Component
 {
     /*************************************************************************
      * Calls back to Survey component to store data.
@@ -28,10 +34,15 @@ class Thanks extends Component
                 <div className="ID_Box">
                     {this.props.textDescription}
                 </div>
+                <div className="usrInput">
+                    {this.props.route ? <NavLink exact to={this.props.route}>
+                        <button id="confirm_next">Proceed to Survey</button>
+                    </NavLink> : <div />}
+                </div>
             </div>
         )
     }
 
 }
 
-export default Thanks;
+export default Introduction;

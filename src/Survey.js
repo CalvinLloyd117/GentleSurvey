@@ -7,9 +7,10 @@ import
 } from "react-router-dom";
 import NodeButtonComponent from "./NodeButtonComponent";
 import NodeComponent from "./NodeComponent";
-import NodeSliderComponent from "./NodeSliderComponent";
+// import NodeSliderComponent from "./NodeSliderComponent";
 import NodeCategoriesComponent from "./NodeCategoriesComponent";
 import Thanks from "./Thanks";
+import Introduction from "./Introduction"
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import $ from "jquery";
 
@@ -42,11 +43,13 @@ import
 {
   returnYouTemplate,
   returnTemplateNode,
+  INTRODUCTION_TEXT,
+  END_OF_SURVEY_STATEMENT,
   ACADEMIC_BOXES,
   LAB_MEMBER_BOX,
   GENDER_SETTINGS,
   // CATEGORIES,
-  SEPARATOR,
+  // SEPARATOR,
   MAX_ALTERS,
   MIN_ALTERS,
   SURVEY_QUESTIONS,
@@ -67,7 +70,11 @@ import
   I_AM_COMFORTABLE_NONACADEMIC,
   DIFFICULT_INTERACTION_BOXES,
   I_PROVIDE_SUPPORT_NONACADEMIC,
-  SIMILAR_ANSWER_BOXES
+  SIMILAR_ANSWER_BOXES,
+  IS_LABMEMBER_SETTINGS,
+  COLLABORATION_SETTINGS,
+  WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS,
+  IS_DIFFICULT_TO_INTERACT_WITH
 
 } from "./Settings"
 
@@ -122,19 +129,20 @@ class Survey extends Component
     console.log("Survey Mounted: ", this.state)
     var sessionNodeData = JSON.parse(sessionStorage.getItem('nodeData'));
     var sessionAuthData = JSON.parse(sessionStorage.getItem('authData'));
-    if(!sessionNodeData===null)
+    if (!sessionNodeData === null)
     {
       this.setState({
-        id: sessionAuthData.id, 
-        nodes: sessionNodeData.nodes, 
-        links: sessionNodeData.links, 
+        id: sessionAuthData.id,
+        nodes: sessionNodeData.nodes,
+        links: sessionNodeData.links,
         foci: sessionNodeData.foci
       })
     }
-    else{
+    else
+    {
       this.setState({
         nodes: (this.props.nodes.length === 0 ? [returnYouTemplate()] :
-        recalculate_nodes(this.props.nodes, recalculate_foci(this.props.foci))),
+          recalculate_nodes(this.props.nodes, recalculate_foci(this.props.foci))),
         links: this.props.links,
         foci: (this.props.foci.length === 0 ? [{ key: 0, x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }] : recalculate_foci(this.props.foci)),
       })
@@ -245,6 +253,78 @@ class Survey extends Component
     }
   }
 
+  deleteNodeCallback = () =>
+  {
+    console.log("Deleting Node at ", this.state.lastClickedNode)
+    let nodes = JSON.parse(JSON.stringify(this.state.nodes));
+    let foci = JSON.parse(JSON.stringify(this.state.foci));
+    // var name = nodes[this.state.lastClickedNode].name
+    if (this.state.correction !== 0)
+    {
+      let splicedObjs = removeNodeAt(nodes, foci, this.state.correction);
+      foci = splicedObjs.foci;
+      nodes = splicedObjs.nodes;
+      this.setState({ nodes: nodes, foci: foci, counter: this.state.nodes.length, correction: 0 });
+      this.pruneLinks(this.state.lastClickedNode)
+    }
+  }
+
+  renameNodeCallback = (newName) =>
+  {
+    console.log("Renaming: ", newName)
+    let nodes = JSON.parse(JSON.stringify(this.state.nodes));
+    if (this.state.correction !== 0)
+    {
+      if (doesNameOverlap(newName, nodes))
+      {
+        alert(DUPLICATE_WARNING);
+      }
+      else if (newName === "")
+      {
+        alert("A node's name cannot be empty. Please try a valid name.")
+      }
+      else
+      {
+        nodes[this.state.lastClickedNode].name = newName
+      }
+    }
+    this.setState({ nodes: nodes, correction: 0 });
+  }
+
+  pruneLinks = (nodeID) =>
+  {
+    var oldLinks = this.state.links
+    var newLinks = [];
+    for (var i = 0; i < oldLinks.length; i++)
+    {
+      oldLinks[i].key = i + 1;
+    }
+    for (var i = 0; i < oldLinks.length; i++)
+    {
+      if (oldLinks[i].source !== nodeID && oldLinks[i].target !== nodeID)
+      {
+        newLinks.push(oldLinks[i])
+      }
+    }
+    for (var i = 0; i < newLinks.length; i++)
+    {
+      if (newLinks[i].source > nodeID)
+      {
+        newLinks[i].source = newLinks[i].source - 1;
+      }
+      if (newLinks[i].target > nodeID)
+      {
+        newLinks[i].target = newLinks[i].target - 1;
+      }
+    }
+    for (var i = 0; i < newLinks.length; i++)
+    {
+      newLinks[i].key = i + 1;
+    }
+    this.setState({ links: newLinks })
+    this.transferData();
+  }
+
   /*************************************************************************
    * Receives name from lower components and creates a node
    * with all relevant properties
@@ -254,32 +334,33 @@ class Survey extends Component
   {
     let nodes = JSON.parse(JSON.stringify(this.state.nodes));
     let foci = JSON.parse(JSON.stringify(this.state.foci));
-    if (this.state.correction !== 0)
+    // if (this.state.correction !== 0)
+    // {
+    //   this.handleNodeChange(name, nodes, foci);
+    // }
+    // else
+    // {
+    // Generate new node if name does not exist
+    let counter = this.state.nodes.length;
+    if (doesNameOverlap(name, nodes))
     {
-      this.handleNodeChange(name, nodes, foci);
+      alert(DUPLICATE_WARNING);
+      return;
     }
     else
     {
-      // Generate new node if name does not exist
-      let counter = this.state.nodes.length;
-      if (doesNameOverlap(name, nodes))
-      {
-        alert(DUPLICATE_WARNING);
-      }
-      else
-      {
-        nodes.push(returnTemplateNode(counter, name));
-        let coords = rect_layout(counter);
+      nodes.push(returnTemplateNode(counter, name));
+      let coords = rect_layout(counter);
 
-        foci.push({
-          key: counter,
-          x: coords[0],
-          y: coords[1]
-        })
-        // Push state
-        this.setState({ nodes: nodes, foci: foci });
-      }
+      foci.push({
+        key: counter,
+        x: coords[0],
+        y: coords[1]
+      })
+      // Push state
+      this.setState({ nodes: nodes, foci: foci });
     }
+    // }
   }
 
   /*************************************************************************
@@ -307,17 +388,108 @@ class Survey extends Component
     {
       nodes[counter].sex = GENDER_SETTINGS.male.name;
       nodes[counter].color = GENDER_SETTINGS.male.color;
-    } else if (nodes[counter].sex === GENDER_SETTINGS.male.name)
+    }
+    else if (nodes[counter].sex === GENDER_SETTINGS.male.name)
     {
       nodes[counter].sex = GENDER_SETTINGS.other.name;
       nodes[counter].color = GENDER_SETTINGS.other.color;
-    } else
+    }
+    else
     {
       nodes[counter].sex = GENDER_SETTINGS.female.name;
       nodes[counter].color = GENDER_SETTINGS.female.color;
     }
     this.setState({ nodes: nodes });
   }
+
+  assignLabMemberNodeCallback = (counter) =>
+  {
+    let nodes = this.state.nodes;
+
+    if (nodes[counter].isLabMember === IS_LABMEMBER_SETTINGS.notLabMember.name || nodes[counter].isLabMember === -1)
+    {
+      nodes[counter].isLabMember = IS_LABMEMBER_SETTINGS.isLabMember.name;
+      nodes[counter].labMemberColor = IS_LABMEMBER_SETTINGS.isLabMember.color;
+    }
+    else if (nodes[counter].isLabMember === IS_LABMEMBER_SETTINGS.isLabMember.name)
+    {
+      nodes[counter].isLabMember = IS_LABMEMBER_SETTINGS.notLabMember.name;
+      nodes[counter].labMemberColor = IS_LABMEMBER_SETTINGS.notLabMember.color;
+    }
+    this.setState({ nodes: nodes });
+  }
+
+  assignCollaboratorNodeCallback = (counter) =>
+  {
+    let nodes = this.state.nodes;
+
+    if (nodes[counter].collaboration === COLLABORATION_SETTINGS.supervisor.name)
+    {
+      nodes[counter].collaboration = COLLABORATION_SETTINGS.committeeMember.name;
+      nodes[counter].collaborationColor = COLLABORATION_SETTINGS.committeeMember.color;
+    }
+    else if (nodes[counter].collaboration === COLLABORATION_SETTINGS.committeeMember.name)
+    {
+      nodes[counter].collaboration = COLLABORATION_SETTINGS.none.name;
+      nodes[counter].collaborationColor = COLLABORATION_SETTINGS.none.color;
+    }
+    else
+    {
+      nodes[counter].collaboration = COLLABORATION_SETTINGS.supervisor.name;
+      nodes[counter].collaborationColor = COLLABORATION_SETTINGS.supervisor.color;
+    }
+    this.setState({ nodes: nodes });
+  }
+
+  similarAnswersNodeCallback = (counter) =>
+  {
+    let nodes = this.state.nodes;
+
+    if (nodes[counter].wouldAnswerSimilarToMe === WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.verySimilar.name)
+    {
+      nodes[counter].wouldAnswerSimilarToMe = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.somewhatSimilar.name;
+      nodes[counter].wouldAnswerSimilarToMeColor = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.somewhatSimilar.color;
+    }
+    else if (nodes[counter].wouldAnswerSimilarToMe === WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.somewhatSimilar.name)
+    {
+      nodes[counter].wouldAnswerSimilarToMe = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.notSimilar.name;
+      nodes[counter].wouldAnswerSimilarToMeColor = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.notSimilar.color;
+    }
+    else if (nodes[counter].wouldAnswerSimilarToMe === WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.notSimilar.name)
+    {
+      nodes[counter].wouldAnswerSimilarToMe = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.noResponse.name;
+      nodes[counter].wouldAnswerSimilarToMeColor = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.noResponse.color;
+    }
+    else
+    {
+      nodes[counter].wouldAnswerSimilarToMe = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.verySimilar.name;
+      nodes[counter].wouldAnswerSimilarToMeColor = WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS.verySimilar.color;
+    }
+    this.setState({ nodes: nodes });
+  }
+
+  difficultInteractionsNodeCallback = (counter) =>
+  {
+    let nodes = this.state.nodes;
+
+    if (nodes[counter].difficultToInteractWith === IS_DIFFICULT_TO_INTERACT_WITH.veryDifficult.name)
+    {
+      nodes[counter].difficultToInteractWith = IS_DIFFICULT_TO_INTERACT_WITH.aLittleDifficult.name;
+      nodes[counter].difficultToInteractWithColor = IS_DIFFICULT_TO_INTERACT_WITH.aLittleDifficult.color;
+    }
+    else if (nodes[counter].difficultToInteractWith === IS_DIFFICULT_TO_INTERACT_WITH.aLittleDifficult.name)
+    {
+      nodes[counter].difficultToInteractWith = IS_DIFFICULT_TO_INTERACT_WITH.noResponse.name;
+      nodes[counter].difficultToInteractWithColor = IS_DIFFICULT_TO_INTERACT_WITH.noResponse.color;
+    }
+    else
+    {
+      nodes[counter].difficultToInteractWith = IS_DIFFICULT_TO_INTERACT_WITH.veryDifficult.name;
+      nodes[counter].difficultToInteractWithColor = IS_DIFFICULT_TO_INTERACT_WITH.veryDifficult.color;
+    }
+    this.setState({ nodes: nodes });
+  }
+
 
   /************************************************************************
    * Determines value displayed next to node on slider screen
@@ -404,42 +576,44 @@ class Survey extends Component
     }
   }
 
-    /*************************************************************************
- * Changes specific category key of a node
- * @param {string} key key of node property
- * @param {object} categories object containing categories and colors  
- * @param {number} counter that identifies node
- * @param {number} id of category
- * @param {string} category category name
- *************************************************************************/
-    multiCategoryButtonCallback = (key, keyColor, categories, counter, id, category) =>
+  /*************************************************************************
+* Changes specific category key of a node
+* @param {string} key key of node property
+* @param {object} categories object containing categories and colors  
+* @param {number} counter that identifies node
+* @param {number} id of category
+* @param {string} category category name
+*************************************************************************/
+  multiCategoryButtonCallback = (key, keyColor, categories, counter, id, category) =>
+  {
+    //updates background associated with node
+    if (counter >= this.state.nodes.length)
     {
-      //updates background associated with node
-      if (counter >= this.state.nodes.length)
+      alert(CATEGORY_WARNING);
+    } else
+    {
+      let nodes = JSON.parse(JSON.stringify(this.state.nodes));
+      if (nodes[counter][key] !== undefined)
       {
-        alert(CATEGORY_WARNING);
-      } else
-      {
-        let nodes = JSON.parse(JSON.stringify(this.state.nodes));
-        if(nodes[counter][key] !== undefined)
+        if (nodes[counter][key].includes(category))
         {
-          if(nodes[counter][key].includes(category))
+          var index = nodes[counter][key].indexOf(category);
+          if (index !== -1)
           {
-            var index = nodes[counter][key].indexOf(category);
-            if (index !== -1) {
-              nodes[counter][key].splice(index, 1);
-            }
-          }
-          else{
-            var temp = nodes[counter][key]
-            temp.push(category);
-            nodes[counter][key] = temp
+            nodes[counter][key].splice(index, 1);
           }
         }
-        // nodes[counter][keyColor] = categories[id].color;
-        this.setState({ nodes: nodes, correction: 0 });
+        else
+        {
+          var temp = nodes[counter][key]
+          temp.push(category);
+          nodes[counter][key] = temp
+        }
       }
+      // nodes[counter][keyColor] = categories[id].color;
+      this.setState({ nodes: nodes, correction: 0 });
     }
+  }
   /*************************************************************************
    * Changes specific continuous key of a node
    * @param {string} key key of node property
@@ -669,15 +843,20 @@ class Survey extends Component
   render()
   {
     return (
-       <HashRouter basename="/">
+      <HashRouter basename="/">
         <div>
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="/">Gentle-1.1</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <NavItem title="Question 1">
+                <NavItem title="Introduction">
                   <NavLink className="nav-link" exact to="/">
+                    Introduction
+                  </NavLink>
+                </NavItem>
+                <NavItem title="Question 1">
+                  <NavLink className="nav-link" exact to="/Question_1">
                     Q1. Name generation example screen.
                   </NavLink>
                 </NavItem>
@@ -726,57 +905,62 @@ class Survey extends Component
                     Q8. Select Individuals That Provide You With Technical Support
                   </NavLink>
                 </NavItem>
-                <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 9" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
+                {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 9" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_9">
                     Q9. Select Individuals Who You Would Like More Technical Support From
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 10" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_10">
-                    Q10. Select Individuals Who You Provide Technical Support For
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_9">
+                    Q9. Select Individuals Who You Provide Technical Support For
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 11" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_11">
-                    Q11. Who Do You Feel Comfortable Talking To About Personal Failure, Disappointment, or Struggle in Your Academic Work?
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_10">
+                    Q10. Who Do You Feel Comfortable Talking To About Personal Failure, Disappointment, or Struggle in Your Academic Work?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 12" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_12">
-                    Q12. Do You Provide Support To Individuals About Personal Failure, Disappointment, or Struggle in Their Academic Work?
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_11">
+                    Q11. Do You Provide Support To Individuals About Personal Failure, Disappointment, or Struggle in Their Academic Work?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 13" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_13">
-                    Q13. Is There Anyone You Feel Comfortable Talking With About Personal Non-Academic Matters?
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_12">
+                    Q12. Is There Anyone You Feel Comfortable Talking With About Personal Non-Academic Matters?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 14" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_14">
-                    Q14. Do You Provide Support To Help Others With Personal Non-Academic Matters?
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_13">
+                    Q13. Do You Provide Support To Help Others With Personal Non-Academic Matters?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 15" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_15">
-                    Q15. Who Do You Feel Uncomfortable Interacting With?
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_14">
+                    Q14. Who Do You Find It Difficult Interacting With?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 16" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_16">
-                    Q16. Who Do You Think Would Closely Match Your Responses To This Survey?
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_15">
+                    Q15. Who Do You Think Would Closely Match Your Responses To This Survey?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 17" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_17">
-                    Q17. Assign Social Network Connections
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_16">
+                    Q16. Assign Social Network Connections
                   </NavLink>
                 </NavItem>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
           <div id="content" className="content container">
-            {/* Route for question 1: Creating alters */}
             <Route exact path="/" component={
+              () => <Introduction textDescription={INTRODUCTION_TEXT}
+                route={"Question_1"}
+              />
+            } />
+            {/* Route for question 1: Creating alters */}
+            <Route exact path="/Question_1" component={
               () => <NodeButtonComponent nodes={this.state.nodes.slice(1)}
                 route={"/Question_2"}
                 max={MAX_ALTERS}
@@ -791,6 +975,10 @@ class Survey extends Component
                 textDescription={SURVEY_QUESTIONS[0]}
                 transferCallBack={this.transferData.bind(this)}
                 lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                lastClickedNode={this.state.lastClickedNode}
+                deleteNodeCallback={this.deleteNodeCallback.bind(this)}
+                renameNodeCallback={this.renameNodeCallback.bind(this)}
+                correction={this.state.correction}
               />
             } />
             {/* Route for question 2: Selecting gender for your alters.
@@ -878,7 +1066,7 @@ class Survey extends Component
                       lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                       textToApply={'culture'}
                       multiText={true}
-                      // graphMultiCategory={true}
+                    // graphMultiCategory={true}
                     />
                 } />
                 {/* Route for Question 4a: Assigning academic/non-academic */}
@@ -955,7 +1143,7 @@ class Survey extends Component
                   />
                 } />
                 {/* Route for Question 5: Assigning Lab Members */}
-                <Route exact path="/Question_6" component={
+                {/* <Route exact path="/Question_6" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -989,9 +1177,29 @@ class Survey extends Component
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                     lastClickedNode={this.state.lastClickedNode}
                   />
+                } /> */}
+                <Route exact path="/Question_6" component={
+                  () => <NodeComponent nodes={this.state.nodes.slice(1)}
+                    route={"/Question_7"}
+                    prevNodes={this.prevNodes}
+                    counter={-1}
+                    links={[]}
+                    foci={this.state.foci.slice(1)}
+                    prevFoci={this.prevFoci}
+                    callBackNodes={this.assignLabMemberNodeCallback.bind(this)}
+                    collectHistory={this.collectHistory.bind(this)}
+                    textDescription={SURVEY_QUESTIONS[7]}
+                    transferCallBack={this.transferData.bind(this)}
+                    legend={
+                      null
+                    }
+                    colorOveride={"labMemberColor"}
+                    lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                    lastClickedNode={this.state.lastClickedNode}
+                  />
                 } />
                 {/* Route for Question 6: Who would you like to colaborate with */}
-                <Route exact path="/Question_7" component={
+                {/* <Route exact path="/Question_7" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1025,8 +1233,28 @@ class Survey extends Component
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                     lastClickedNode={this.state.lastClickedNode}
                   />
-                } />
+                } /> */}
 
+                <Route exact path="/Question_7" component={
+                  () => <NodeComponent nodes={this.state.nodes.slice(1)}
+                    route={"/Question_8"}
+                    prevNodes={this.prevNodes}
+                    counter={-1}
+                    links={[]}
+                    foci={this.state.foci.slice(1)}
+                    prevFoci={this.prevFoci}
+                    callBackNodes={this.assignCollaboratorNodeCallback.bind(this)}
+                    collectHistory={this.collectHistory.bind(this)}
+                    textDescription={SURVEY_QUESTIONS[8]}
+                    transferCallBack={this.transferData.bind(this)}
+                    legend={
+                      null
+                    }
+                    colorOveride={"collaborationColor"}
+                    lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                    lastClickedNode={this.state.lastClickedNode}
+                  />
+                } />
                 {/* Question 7: Who Provides you with Technical Support */}
                 <Route exact path="/Question_8" component={
                   () => <NodeComponent fixed={1}
@@ -1064,7 +1292,7 @@ class Survey extends Component
                   />
                 } />
                 {/* Question 8: Who would you like more support from? */}
-                <Route exact path="/Question_9" component={
+                {/* <Route exact path="/Question_9" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1098,9 +1326,9 @@ class Survey extends Component
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                     lastClickedNode={this.state.lastClickedNode}
                   />
-                } />
+                } /> */}
                 {/* Question 9: Who do you provide technical support for? */}
-                <Route exact path="/Question_10" component={
+                <Route exact path="/Question_9" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1118,7 +1346,7 @@ class Survey extends Component
                         y: node.iProvideSupport_Technical === -1 ? ((Math.floor((node.key - 1) / 5) * (NODE_RADIUS * 2)) + (NODE_RADIUS)) : node.fixedPosY,
                       }
                     ))}
-                    route={"/Question_11"}
+                    route={"/Question_10"}
                     prevNodes={this.prevNodes}
                     counter={-1}
                     // counter={this.determineCounterReturn(this.state.nodes.slice(1), "academic", "")}
@@ -1136,7 +1364,7 @@ class Survey extends Component
                   />
                 } />
                 {/* Question 10: Do you feel comfortable talking with anyone below about personal failure, disappointment, or struggle in your academic work?  */}
-                <Route exact path="/Question_11" component={
+                <Route exact path="/Question_10" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1154,7 +1382,7 @@ class Survey extends Component
                         y: node.iAmComfortable_Failure_Disappointment_Struggle_Academic === -1 ? ((Math.floor((node.key - 1) / 5) * (NODE_RADIUS * 2)) + (NODE_RADIUS)) : node.fixedPosY,
                       }
                     ))}
-                    route={"/Question_12"}
+                    route={"/Question_11"}
                     prevNodes={this.prevNodes}
                     counter={-1}
                     // counter={this.determineCounterReturn(this.state.nodes.slice(1), "academic", "")}
@@ -1173,7 +1401,7 @@ class Survey extends Component
                 } />
                 {/* Question 11: Do you provide support for individuals regarding personal failure, disappointment, or struggle in their
             academic work? */}
-                <Route exact path="/Question_12" component={
+                <Route exact path="/Question_11" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1191,7 +1419,7 @@ class Survey extends Component
                         y: node.iProvideSupport_Failure_Disappointment_Struggle_Academic === -1 ? ((Math.floor((node.key - 1) / 5) * (NODE_RADIUS * 2)) + (NODE_RADIUS)) : node.fixedPosY,
                       }
                     ))}
-                    route={"/Question_13"}
+                    route={"/Question_12"}
                     prevNodes={this.prevNodes}
                     counter={-1}
                     // counter={this.determineCounterReturn(this.state.nodes.slice(1), "academic", "")}
@@ -1209,7 +1437,7 @@ class Survey extends Component
                   />
                 } />
                 {/* Question 12: Is there anyone below that you feel comfortable talking with about personal, non-academic matters? */}
-                <Route exact path="/Question_13" component={
+                <Route exact path="/Question_12" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1227,7 +1455,7 @@ class Survey extends Component
                         y: node.iAmComfortable_Personal_NonAcademic === -1 ? ((Math.floor((node.key - 1) / 5) * (NODE_RADIUS * 2)) + (NODE_RADIUS)) : node.fixedPosY,
                       }
                     ))}
-                    route={"/Question_14"}
+                    route={"/Question_13"}
                     prevNodes={this.prevNodes}
                     counter={-1}
                     // counter={this.determineCounterReturn(this.state.nodes.slice(1), "academic", "")}
@@ -1245,7 +1473,7 @@ class Survey extends Component
                   />
                 } />
                 {/* Question 13: Do you provide (or would be willing to provide) support to help others with personal, non-academic matters? */}
-                <Route exact path="/Question_14" component={
+                <Route exact path="/Question_13" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1263,7 +1491,7 @@ class Survey extends Component
                         y: node.iProvideSupport_Personal_NonAcademic === -1 ? ((Math.floor((node.key - 1) / 5) * (NODE_RADIUS * 2)) + (NODE_RADIUS)) : node.fixedPosY,
                       }
                     ))}
-                    route={"/Question_15"}
+                    route={"/Question_14"}
                     prevNodes={this.prevNodes}
                     counter={-1}
                     // counter={this.determineCounterReturn(this.state.nodes.slice(1), "academic", "")}
@@ -1281,7 +1509,7 @@ class Survey extends Component
                   />
                 } />
                 {/* Question 14: Is there anyone below with whom you find it difficult to interact? */}
-                <Route exact path="/Question_15" component={
+                {/* <Route exact path="/Question_15" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1315,10 +1543,30 @@ class Survey extends Component
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                     lastClickedNode={this.state.lastClickedNode}
                   />
+                } /> */}
+                <Route exact path="/Question_14" component={
+                  () => <NodeComponent nodes={this.state.nodes.slice(1)}
+                    route={"/Question_15"}
+                    prevNodes={this.prevNodes}
+                    counter={-1}
+                    links={[]}
+                    foci={this.state.foci.slice(1)}
+                    prevFoci={this.prevFoci}
+                    callBackNodes={this.difficultInteractionsNodeCallback.bind(this)}
+                    collectHistory={this.collectHistory.bind(this)}
+                    textDescription={SURVEY_QUESTIONS[16]}
+                    transferCallBack={this.transferData.bind(this)}
+                    colorOveride={"difficultToInteractWithColor"}
+                    legend={
+                      null
+                    }
+                    lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                    lastClickedNode={this.state.lastClickedNode}
+                  />
                 } />
 
-                {/* Question 15: If the individuals below also took the norm survey, do you think they would answer the norm statements in a similar way as you? */}
-                <Route exact path="/Question_16" component={
+                {/* Question 16: If the individuals below also took the norm survey, do you think they would answer the norm statements in a similar way as you? */}
+                {/* <Route exact path="/Question_16" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1351,6 +1599,26 @@ class Survey extends Component
                     categories={SIMILAR_ANSWER_BOXES}
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                     lastClickedNode={this.state.lastClickedNode}
+                  />
+                } /> */}
+                <Route exact path="/Question_15" component={
+                  () => <NodeComponent nodes={this.state.nodes.slice(1)}
+                    route={"/Question_16"}
+                    prevNodes={this.prevNodes} similarAnswersNodeCallback
+                    counter={-1}
+                    links={[]}
+                    foci={this.state.foci.slice(1)}
+                    prevFoci={this.prevFoci}
+                    callBackNodes={this.similarAnswersNodeCallback.bind(this)}
+                    collectHistory={this.collectHistory.bind(this)}
+                    textDescription={SURVEY_QUESTIONS[17]}
+                    transferCallBack={this.transferData.bind(this)}
+                    legend={
+                      null
+                    }
+                    lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                    lastClickedNode={this.state.lastClickedNode}
+                    colorOveride={"wouldAnswerSimilarToMeColor"}
                   />
                 } />
                 {/* <Route exact path="/Boolean" component={
@@ -1444,7 +1712,7 @@ class Survey extends Component
                 textDescription={SURVEY_QUESTIONS[6]}
                 transferCallBack={this.transferData.bind(this)} />
             } /> */}
-                <Route exact path="/Question_17" component={
+                <Route exact path="/Question_16" component={
                   () => (MOBILE ? <NodeComponent nodes={this.state.nodes.slice(1).map((node, i) => (
                     {
                       key: node.key,
@@ -1462,7 +1730,7 @@ class Survey extends Component
                       float: false,
                       link: node.link,
                       floatX: node.floatX,
-                      floatY: node.floatY
+                      floatY: node.floatY,
                     }
                   ))}
                     route={"/End_of_Study"}
@@ -1477,6 +1745,7 @@ class Survey extends Component
                     callBackNodes={this.networkNodesCallback.bind(this)}
                     collectHistory={this.collectHistory.bind(this)}
                     textDescription={SURVEY_QUESTIONS[18]}
+                    extraHeight={true}
                     transferCallBack={this.transferData.bind(this)} />
 
                     :
@@ -1519,17 +1788,19 @@ class Survey extends Component
                       callBackNodes={this.networkNodesCallback.bind(this)}
                       collectHistory={this.collectHistory.bind(this)}
                       textDescription={SURVEY_QUESTIONS[18]}
-                      transferCallBack={this.transferData.bind(this)} />
-                      )} />
+                      transferCallBack={this.transferData.bind(this)}
+                      extraHeight={true}
+                    />
+                  )} />
 
-                <Route exact path="/End_of_Study" component={() => <Thanks textDescription={SURVEY_QUESTIONS[19]} transferCallBack={this.transferData.bind(this)} />} />
+                <Route exact path="/End_of_Study" component={() => <Thanks textDescription={END_OF_SURVEY_STATEMENT} transferCallBack={this.transferData.bind(this)} />} />
               </div>
               :
               <></>
             }
           </div>
         </div>
-       </HashRouter>
+      </HashRouter>
     );
   }
 }

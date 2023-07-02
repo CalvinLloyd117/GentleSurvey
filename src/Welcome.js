@@ -19,29 +19,31 @@ class Welcome extends Component
         // this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount()
+    {
         // TODO: setting the survey ready state to true here solves the issue that occurs when reloading the survey mis way through.
         // We need to do a check here that will look for sessionNodeData/sessionAuthData and if it exists pull it in and set the component state with it.
         // this will pass the existing nodes down the tree into the survey component.
-        var isAuthorized=this.reAuthorizeUserSession()
-        if(isAuthorized === true)
+        var isAuthorized = this.reAuthorizeUserSession()
+        if (isAuthorized === true)
         {
             var sessionAuthData = JSON.parse(sessionStorage.getItem('authData'));
             var sessionNodeData = JSON.parse(sessionStorage.getItem('nodeData'));
-            this.setState({ id: sessionAuthData.id,  nodes: sessionNodeData.nodes, links: sessionNodeData.links, foci: sessionNodeData.foci, surveyReady: false })
+            this.setState({ id: sessionAuthData.id, nodes: sessionNodeData.nodes, links: sessionNodeData.links, foci: sessionNodeData.foci, surveyReady: false })
 
         }
-        this.setState({surveyReady: isAuthorized})
-        // this.setState({surveyReady: true})
+        this.setState({ surveyReady: isAuthorized })
+        //  this.setState({surveyReady: true})
     }
 
-    reAuthorizeUserSession=()=>{
-        var sessionAuthData=JSON.parse(sessionStorage.getItem('authData'));
-        if(sessionAuthData!==null)
+    reAuthorizeUserSession = () =>
+    {
+        var sessionAuthData = JSON.parse(sessionStorage.getItem('authData'));
+        if (sessionAuthData !== null)
         {
             var authToken = sessionAuthData.auth;
-        }   
-        
+        }
+
         return authToken;
     }
 
@@ -95,9 +97,9 @@ class Welcome extends Component
             //there are values in the DB to use
             else
             {
-                var f_array=[];
+                var f_array = [];
                 console.log("res.data is not null")
-                for(var i = 0; i< res.data.nodes.length; i++)
+                for (var i = 0; i < res.data.nodes.length; i++)
                 {
                     var f = {
                         key: i,
@@ -106,7 +108,7 @@ class Welcome extends Component
                     }
                     f_array.push(f)
                 }
-                this.setState({foci: f_array})
+                this.setState({ foci: f_array })
                 sessionStorage.setItem("nodeData", JSON.stringify({ nodes: res.data.nodes, links: res.data.links, foci: this.state.foci }));
             }
         }
@@ -134,11 +136,11 @@ class Welcome extends Component
         }
     }
 
-    handleRegisterCallback=(username, password, passwordConfirm, consent) => 
+    handleRegisterCallback = (username, password, passwordConfirm, consent) => 
     {
-        if(consent)
+        if (consent)
         {
-            if(password === passwordConfirm)
+            if (password === passwordConfirm)
             {
                 console.log("Passwords match")
                 this.register(username, password, passwordConfirm, consent)
@@ -147,7 +149,7 @@ class Welcome extends Component
             {
                 alert("The passwords you have entered do not match. Please check them and try again.")
             }
-            
+
         }
     }
 
@@ -163,20 +165,20 @@ class Welcome extends Component
         })
     }
 
-    registerSuccess=(res)=>
+    registerSuccess = (res) =>
     {
         console.log("register success handler triggered: ", res)
         window.location = '/'
     }
 
-    registerFailure=(res)=>
+    registerFailure = (res) =>
     {
         var failureMessage = res.responseJSON.status;
-        if(failureMessage === "User exists")
+        if (failureMessage === "User exists")
         {
             alert("There is already a participant using this email address.")
         }
-        else if(failureMessage === "password mismatch")
+        else if (failureMessage === "password mismatch")
         {
             alert("The passwords you have entered do not match. Please check them and try again.")
         }
@@ -189,24 +191,24 @@ class Welcome extends Component
 
     conditionalRender = () =>
     {
-        if(this.state.surveyReady === true)
+        if (this.state.surveyReady === true)
         {
             return <Survey ID={this.state.id} nodes={this.state.nodes} links={this.state.links} foci={this.state.foci} />
         }
         else
         {
-            return  <HashRouter>
-                 {/* <Switch> */}
-                 <Route exact path="/" render={(props)=> (
-                    <Login handleLoginCallback={this.handleLoginCallback}/>
-                 )}/>
-                     <Route exact path="/register" render={(props) => (
-                         <Register handleRegisterCallback={this.handleRegisterCallback}/>
-                     )} />
-                     <Route exact path="/consent" render={(props) => (
-                         <Info />
-                     )} />
-             </HashRouter>
+            return <HashRouter>
+                {/* <Switch> */}
+                <Route exact path="/" render={(props) => (
+                    <Login handleLoginCallback={this.handleLoginCallback} />
+                )} />
+                <Route exact path="/register" render={(props) => (
+                    <Register handleRegisterCallback={this.handleRegisterCallback} />
+                )} />
+                <Route exact path="/consent" render={(props) => (
+                    <Info />
+                )} />
+            </HashRouter>
         }
     }
 

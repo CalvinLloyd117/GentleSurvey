@@ -37,4 +37,4 @@ export*.js
 # environment file
 .env
 build
-package-lock.json
+# package-lock.json

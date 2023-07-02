@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import Survey from "./Survey";
-import { NavLink, Link, Navigate } from 'react-router-dom'
-import ReactDOM from "react-dom";
+// import Survey from "./Survey";
+// import { NavLink, Link, Navigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+// import ReactDOM from "react-dom";
 import "./css/bootstrap.css";
 import "./css/style.css";
-import Info from "./Info.js";
-import { INFORMATION } from "./Settings.js";
-import $ from "jquery";
+// import Info from "./Info.js";
+// import { INFORMATION } from "./Settings.js";
+// import $ from "jquery";
 
 class Login extends Component
 {

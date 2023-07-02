@@ -53,12 +53,15 @@ class NodeComponent extends Component
             counter={this.props.counter}
             nodes={this.props.nodes}
             prevNodes={this.props.prevNodes}
+            colorOveride={this.props.colorOveride}
             links={this.props.links}
             foci={this.props.foci}
             prevFoci={this.props.prevFoci}
             callBack={this.props.callBackNodes}
             collectHistory={this.props.collectHistory}
-            categories={(this.props.categories ? this.props.categories : [])} />
+            categories={(this.props.categories ? this.props.categories : [])}
+            extraHeight={this.props.extraHeight}
+          />
           <div className="usrInput">
             {this.props.route ? <NavLink exact to={this.props.route} onClick={() => this.transferCallBack}>
               <button id="confirm_next">Confirm & Next</button>

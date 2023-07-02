@@ -58,7 +58,7 @@ class Welcome extends Component
     {
          e.preventDefault();
         // Adding some password restriction rules.
-            if (this.state.consent == true)
+            if (this.state.consent === true)
             {
                 console.log("Registering")
                 this.props.handleRegisterCallback(this.state.id, this.state.password, this.state.passwordConfirm, this.state.consent)

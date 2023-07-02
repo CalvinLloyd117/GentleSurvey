@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom'
 // import Welcome from "./Welcome.js";
 
