@@ -214,7 +214,7 @@ export const SURVEY_QUESTIONS = [
     //Question 5b Instructions and message 
     <div>
         <p>
-            Q5b. Here are the individuals you placed in the academic box. Can you tell me more about each of their positions?
+            Q5. Here are the individuals you placed in the academic box. Can you tell me more about each of their positions?
         </p>
         <p>
             You can do this by clicking an individual and then selecting the appropriate position below.
@@ -495,8 +495,9 @@ export const ACADEMIC_SUBCATEGORIES = [
     { key: 4, text: "Technician", color: "#F8CEB9" },
     { key: 5, text: "Instructor", color: "#F7C4BA" },
     { key: 6, text: "Professor", color: "#F6BBBB" },
-    { key: 7, text: "Administration", color: "#fEB4E3" },
-    { key: 8, text: "Other", color: "#F2BFEA" }
+    { key: 7, text: "Professional - Scientist", color: "#fEB4E3" },
+    { key: 8, text: "Professional - other", color: "#F2BFEA" },
+    { key: 9, text: "Other", color: "#F1B6EC" }
 
 ];
 

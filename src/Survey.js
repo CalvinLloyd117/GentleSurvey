@@ -875,21 +875,21 @@ class Survey extends Component
                     Q4. Assign individual's cultural background
                   </NavLink>
                 </NavItem>
-                <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5a" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
+                {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5a" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_5_a">
                     Q5. a) Assign Alters Academic or Non-academic
                   </NavLink>
-                </NavItem>
-                <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5b" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
-                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_5_b">
-                    Q5. b) Assign Categories for Academics
+                </NavItem> */}
+                <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
+                  <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_5">
+                    Q5. Assign Categories for Academics
                   </NavLink>
                 </NavItem>
-                <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5c" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
+                {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5c" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_5_c">
                     Q5. c) Assign Categories for Non-Academics
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 6" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_6">
                     Q6. Select Lab Members
@@ -1049,7 +1049,7 @@ class Survey extends Component
                 <Route exact path="/Question_4" component={
                   () =>
                     <NodeCategoriesComponent nodes={this.state.nodes.slice(1)}
-                      route={"/Question_5_a"}
+                      route={"/Question_5"}
                       prevNodes={this.prevNodes}
                       counter={this.determineCounterReturn(this.state.nodes.slice(1), "culture", "")}
                       sliderUpdateValue={this.sliderUpdateValue("culture", 1)}
@@ -1069,8 +1069,10 @@ class Survey extends Component
                     // graphMultiCategory={true}
                     />
                 } />
+
+
                 {/* Route for Question 4a: Assigning academic/non-academic */}
-                <Route exact path="/Question_5_a" component={
+                {/* <Route exact path="/Question_5_a" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1088,7 +1090,8 @@ class Survey extends Component
                         y: node.academic === -1 ? ((Math.floor((node.key - 1) / 5) * (NODE_RADIUS * 2)) + (NODE_RADIUS)) : node.fixedPosY,
                       }
                     ))}
-                    route={"/Question_5_b"}
+
+                    route={"/Question_5"}
                     prevNodes={this.prevNodes}
                     counter={-1}
                     // counter={this.determineCounterReturn(this.state.nodes.slice(1), "academic", "")}
@@ -1104,14 +1107,16 @@ class Survey extends Component
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                     lastClickedNode={this.state.lastClickedNode}
                   />
-                } />
+                } /> */}
                 {/* Route for Question 4 b, Academic Subcategory */}
-                <Route exact path="/Question_5_b" component={
+                <Route exact path="/Question_5" component={
                   () =>
-                    <NodeCategoriesComponent nodes={filterNodes(this.state.nodes, 'academic', "academic")}
-                      route={"/Question_5_c"}
+                    // <NodeCategoriesComponent nodes={filterNodes(this.state.nodes, 'academic', "academic")}
+                    <NodeCategoriesComponent nodes={this.state.nodes.slice(1)}
+                      route={"/Question_6"}
                       prevNodes={this.prevNodes}
-                      counter={this.determineCounterReturn(filterNodes(this.state.nodes, 'academic', "academic"), "academicSubCategory", "")}
+                      // counter={this.determineCounterReturn(filterNodes(this.state.nodes, 'academic', "academic"), "academicSubCategory", "")}
+                      counter={this.determineCounterReturn(this.state.nodes, 'academic', "")}
                       links={[]}
                       categories={ACADEMIC_SUBCATEGORIES}
                       foci={this.state.foci.slice(1)}
@@ -1122,10 +1127,32 @@ class Survey extends Component
                       textDescription={SURVEY_QUESTIONS[5]}
                       transferCallBack={this.transferData.bind(this)}
                       lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                      textToApply={'academicSubCategory'}
+                    />
+                } />
+                    <Route exact path="/Question_3" component={
+                  () =>
+                    <NodeCategoriesComponent nodes={this.state.nodes.slice(1)}
+                      route={"/Question_4"}
+                      prevNodes={this.prevNodes}
+                      counter={this.determineCounterReturn(this.state.nodes.slice(1), "age", "")}
+                      // sliderUpdateValue={this.sliderUpdateValue("age", 1)}
+                      links={[]}
+                      categories={AGE_CATEGORIES}
+                      foci={this.state.foci.slice(1)}
+                      prevFoci={this.prevFoci}
+                      callBackNodes={this.genericNodesCallback.bind(this)}
+                      callBackButton={[this.changeAgeCategoryButtonCallback.bind(this), "age", null, AGE_CATEGORIES]}
+                      // callBackButton={[this.changeSliderButtonCallback.bind(this), "age"]}
+                      collectHistory={this.collectHistory.bind(this)}
+                      textDescription={SURVEY_QUESTIONS[2]}
+                      transferCallBack={this.transferData.bind(this)}
+                      lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
+                      textToApply={'age'}
                     />
                 } />
                 {/* Route for Question 4 c, non-academic subcategory */}
-                <Route exact path="/Question_5_c" component={
+                {/* <Route exact path="/Question_5_c" component={
                   () => <NodeCategoriesComponent nodes={filterNodes(this.state.nodes, 'academic', "non-academic")}
                     route={"/Question_6"}
                     prevNodes={this.prevNodes}
@@ -1141,7 +1168,7 @@ class Survey extends Component
                     transferCallBack={this.transferData.bind(this)}
                     lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
                   />
-                } />
+                } /> */}
                 {/* Route for Question 5: Assigning Lab Members */}
                 {/* <Route exact path="/Question_6" component={
                   () => <NodeComponent fixed={1}
