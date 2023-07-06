@@ -857,7 +857,7 @@ class Survey extends Component
                 </NavItem>
                 <NavItem title="Question 1">
                   <NavLink className="nav-link" exact to="/Question_1">
-                    Q1. Name generation example screen.
+                    Q1. Name Generation Example Screen.
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 2" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
@@ -872,7 +872,7 @@ class Survey extends Component
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 4" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_4">
-                    Q4. Assign individual's cultural background
+                    Q4. Assign Individual's Cultural Background
                   </NavLink>
                 </NavItem>
                 {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5a" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
@@ -882,7 +882,7 @@ class Survey extends Component
                 </NavItem> */}
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_5">
-                    Q5. Assign Categories for Academics
+                    Q5. Assign Academic Role
                   </NavLink>
                 </NavItem>
                 {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5c" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
@@ -897,12 +897,12 @@ class Survey extends Component
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 7" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_7">
-                    Q7. Select Collaborators
+                    Q7. Select Supervisor(s)/Committee Member(s)
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 8" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_8">
-                    Q8. Select Individuals That Provide You With Technical Support
+                    Q8. Comfort Level Discussing Your Personal Life With Others
                   </NavLink>
                 </NavItem>
                 {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 9" : "Please add " + MIN_ALTERS + " individuals to access this question."}>

@@ -157,13 +157,13 @@ export const SURVEY_QUESTIONS = [
     // Question 1 Instructions (appearing in text-box)
     <div>
         <p>
-            Q1. Name 20 individuals that you interact with most frequently in your academic program (e.g., supervisor(s), committee members, lab members, other fellow students/classmates, professors, instructors, teaching assistants, or staff members). Feel free to name individuals from non-academic environments if you interact with them as a student (e.g., professional affiliates, employers, community members, elders, family, friends, or partners).
+            Q1. Name 20 individuals that you interact with most frequently as a student or post-doctoral fellow. Think of individuals you interact with while conducting your research (e.g., field or lab work, lab meetings, reading clubs, seminars, classes, clubs, etc). These individuals might include supervisor(s), committee members, lab members, fellow students/classmates, summer students, professors, instructors, teaching assistants, technicians, lab managers, staff members, professional scientists, or others.
         </p>
         <p>
-            *You should be able to recognize all these individuals by face or name, and they should recognize you by face or name via in person or online interactions.
+        *You should be able to recognize all these individuals by face or name, and they should recognize you by face or name via in person or online interactions.
         </p>
         <p>
-            If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard, or click the Modify Selected Node button.
+        If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard or click the Modify Selected Node button..
         </p>
     </div>,
     // Question 2 Instructions (appearing in text-box)
@@ -173,7 +173,7 @@ export const SURVEY_QUESTIONS = [
                 Q2. Please select a gender for each individual.
             </p>
             <p>
-                You can do this by clicking an individual to cycle through options until their color matches the appropriate gender found in the Legend.
+                You can do this by clicking an individual to cycle through options until their color matches the appropriate gender found in the legend.
             </p>
         </div>
 
@@ -187,10 +187,10 @@ export const SURVEY_QUESTIONS = [
     // Question 3 Instructions
     <div>
         <p>
-            Q3. Please enter an age for each individual. If you are unsure, an approximate is acceptable.
+            Q3. Do your best to give an approximate age category for each individual.
         </p>
         <p>
-            You can do this by clicking an individual and selecting an age bracket.
+        You can do this by clicking an individual and selecting an age bracket. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
     // Question 4 Instructions
@@ -199,7 +199,7 @@ export const SURVEY_QUESTIONS = [
             Q4. What is each individual's cultural background?
         </p>
         <p>
-            Select an individual, and select the culture that best describes them. If you would like, you can select multiple options for an individual by clicking them and selecting an additional category. If you want to remove a category from an individual, simply click them and select the option again to remove it.
+        You can do this by clicking an individual and selecting the appropriate cultural category. <u>You can select multiple options</u> for an individual by clicking them and selecting an additional category. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
     // Question 5a Instructions
@@ -214,10 +214,10 @@ export const SURVEY_QUESTIONS = [
     //Question 5b Instructions and message 
     <div>
         <p>
-            Q5. Here are the individuals you placed in the academic box. Can you tell me more about each of their positions?
+            Q5. Which category best describes each individual?
         </p>
         <p>
-            You can do this by clicking an individual and then selecting the appropriate position below.
+        You can do this by clicking an individual and then selecting the appropriate position below. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
     //Question 5c Instructions message
@@ -233,7 +233,7 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q6. Select All YOUR lab members by clicking them.
+                Q6. Select All YOUR current lab members by clicking them.
             </p>
         </div>
         <div className="legend">
@@ -247,7 +247,7 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q7. If listed, select your supervisor(s) and committee member(s) by clicking them until their color matches the legend on the right.
+                Q7. If listed, select your current supervisor(s) and committee member(s) by clicking them until their color matches the legend on the right.
             </p>
         </div>
         <div className="legend">
@@ -260,13 +260,10 @@ export const SURVEY_QUESTIONS = [
     // Question 8
     <div>
         <p>
-            Q8. Does anyone below <b>provide technical support</b> that helps you develop your skills as a researcher or student?
+            Q8. How comfortable are you discussing details about your personal life with these individuals
         </p>
         <p>
-            For example, this could be collaborating on research together, or help with things like developing research skills, field or lab work, writing, reading, class work, coding, or statistics.
-        </p>
-        <p>
-            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            FClick and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 9
@@ -281,10 +278,7 @@ export const SURVEY_QUESTIONS = [
     // Question 10
     <div>
         <p>
-            Q9. <b>Do you provide</b> (or would be willing to provide) <b>technical support</b> to help others develop their skills as a researcher or student?
-        </p>
-        <p>
-            For example, this could be collaborating on research together, or help with things like developing research skills, field or lab work, writing, reading, class work, coding, or statistics.
+            Q9. How comfortable are you providing support to anyone below who wishes to discuss details about <u>their personal life</u> with you?
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -293,44 +287,50 @@ export const SURVEY_QUESTIONS = [
     // Question 11
     <div>
         <p>
-            Q10. Do you feel comfortable talking with anyone below about <b>failure, disappointment, or struggle in your academic work</b>?
+            Q10. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
         </p>
         <p>
-            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+        </p>
+        <p>
+        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 12
     <div>
         <p>
-            Q11. <b>Do you provide</b> (or would be willing to provide) support to any individuals below about <b>failure, disappointment, or struggle in their academic work</b>?
+            Q11. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
         </p>
         <p>
-            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+        </p>
+        <p>
+        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 13
     <div>
         <p>
-            Q12. Is there anyone below that you feel comfortable talking with about <b>personal, non-academic matters</b>?
+            Q12. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work</u>?
         </p>
         <p>
-            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 14
     <div>
         <p>
-            Q13. <b>Do you provide</b> (or would be willing to provide) support to help others with <b>personal, non-academic matters</b>?
+            Q13. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work</u>?
         </p>
         <p>
-            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 15
     <>
         <div>
             <p>
-                Q14. Is there anyone below with whom you find it difficult to interact?
+                Q14. Do you find it difficult to interact with anyone below?
             </p>
             <p>
                 Click them until their color matches the legend on the right.
@@ -339,7 +339,7 @@ export const SURVEY_QUESTIONS = [
         <div className="legend">
             <h3>Legend</h3>
             <div className="legendNode" style={{ backgroundColor: BOX_COLORS[0] }}><p>Very Difficult</p></div>
-            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[1] }}><p>A Little Difficult</p></div>
+            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[1] }}><p>Somewhat difficult</p></div>
         </div>
     </>
     ,
@@ -347,7 +347,7 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q15. If the individuals below also took the norm survey, do you think they would answer the norm statements in a similar way as you?
+                Q15. How close are you to these individuals?
             </p>
             <p>
                 Click individuals until their colour matches the legend on the right. If you are unsure you can leave the individual unchanged.
@@ -355,19 +355,19 @@ export const SURVEY_QUESTIONS = [
         </div>
         <div className="legend">
             <h3>Legend</h3>
-            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[0] }}><p>Very Similar</p></div>
-            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[1] }}><p>Somewhat Similar</p></div>
-            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[2] }}><p>Not Similar</p></div>
+            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[0] }}><p>Very close</p></div>
+            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[1] }}><p>Somewhat close</p></div>
+            <div className="legendNode" style={{ backgroundColor: BOX_COLORS[2] }}><p>Not close</p></div>
         </div>
     </>
     ,
     // Question 17
     <div>
         <p>
-            You've told us about who provides you with technical support. Now, link individuals from your network that provide technical support to each other. For example, individuals who collaborate on research together, help each other with field or lab work, or help each other with reading, writing, or statistics.
+           Q16. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
-            Create a link (or unlink) by clicking an individual, and then clicking another individual. Take your time to ensure the most complete network.
+            Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for the current selection. <u>Click the green dot</u> to cancel your current selection. Take your time to ensure the most complete network.
         </p>
     </div>
 ];
@@ -683,8 +683,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of technical support:",
-            value: "a lot",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -693,8 +693,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little technical support:",
-            value: "a little",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -703,8 +703,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No technical support at all:",
-            value: "none",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -716,8 +716,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of technical support:",
-            value: "a lot",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -726,8 +726,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little technical support:",
-            value: "a little",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -735,8 +735,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No technical support at all:",
-            value: "none",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -781,8 +781,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of technical support:",
-            value: "a lot",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -791,8 +791,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little technical support:",
-            value: "a little",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -801,8 +801,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No technical support at all:",
-            value: "none",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -814,8 +814,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of technical support:",
-            value: "a lot",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -824,8 +824,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little technical support:",
-            value: "a little",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -833,8 +833,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No technical support at all:",
-            value: "none",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -849,8 +849,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -859,8 +859,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -869,8 +869,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -882,8 +882,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -892,8 +892,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -901,8 +901,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -917,8 +917,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -927,8 +927,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -937,8 +937,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -950,8 +950,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -960,8 +960,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -969,8 +969,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -995,8 +995,8 @@ export const I_AM_COMFORTABLE_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -1005,7 +1005,7 @@ export const I_AM_COMFORTABLE_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
+            text: "Not comfortable:",
             value: "not comfortable",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
@@ -1028,8 +1028,8 @@ export const I_AM_COMFORTABLE_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -1037,7 +1037,7 @@ export const I_AM_COMFORTABLE_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not  comfortable at all:",
+            text: "Not comfortable:",
             value: "not comfortable",
             color: BOX_COLORS[2],
             x: 15,
@@ -1063,8 +1063,8 @@ export const I_PROVIDE_SUPPORT_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -1073,7 +1073,7 @@ export const I_PROVIDE_SUPPORT_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
+            text: "Not comfortable:",
             value: "not comfortable",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
@@ -1096,8 +1096,8 @@ export const I_PROVIDE_SUPPORT_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "A little comfortable:",
-            value: "a little comfortable",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -1105,7 +1105,7 @@ export const I_PROVIDE_SUPPORT_NONACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable at all:",
+            text: "Not comfortable:",
             value: "not comfortable",
             color: BOX_COLORS[2],
             x: 15,
