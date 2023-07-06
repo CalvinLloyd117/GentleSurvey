@@ -1130,27 +1130,6 @@ class Survey extends Component
                       textToApply={'academicSubCategory'}
                     />
                 } />
-                    <Route exact path="/Question_3" component={
-                  () =>
-                    <NodeCategoriesComponent nodes={this.state.nodes.slice(1)}
-                      route={"/Question_4"}
-                      prevNodes={this.prevNodes}
-                      counter={this.determineCounterReturn(this.state.nodes.slice(1), "age", "")}
-                      // sliderUpdateValue={this.sliderUpdateValue("age", 1)}
-                      links={[]}
-                      categories={AGE_CATEGORIES}
-                      foci={this.state.foci.slice(1)}
-                      prevFoci={this.prevFoci}
-                      callBackNodes={this.genericNodesCallback.bind(this)}
-                      callBackButton={[this.changeAgeCategoryButtonCallback.bind(this), "age", null, AGE_CATEGORIES]}
-                      // callBackButton={[this.changeSliderButtonCallback.bind(this), "age"]}
-                      collectHistory={this.collectHistory.bind(this)}
-                      textDescription={SURVEY_QUESTIONS[2]}
-                      transferCallBack={this.transferData.bind(this)}
-                      lastClickedNodeCallback={this.setLastClickedNode.bind(this)}
-                      textToApply={'age'}
-                    />
-                } />
                 {/* Route for Question 4 c, non-academic subcategory */}
                 {/* <Route exact path="/Question_5_c" component={
                   () => <NodeCategoriesComponent nodes={filterNodes(this.state.nodes, 'academic', "non-academic")}
