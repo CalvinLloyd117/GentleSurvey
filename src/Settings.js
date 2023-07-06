@@ -255,21 +255,38 @@ export const SURVEY_QUESTIONS = [
             <div className="legendNode" style={{ backgroundColor: BOX_COLORS[0] }}><p>Supervisor</p></div>
             <div className="legendNode" style={{ backgroundColor: BOX_COLORS[1] }}><p>Committee Member</p></div>
         </div>
-    </>
-    ,
+    </>,
+    // Question 13
+    <div>
+        <p>
+            Q8. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work</u>?
+        </p>
+        <p>
+        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+        </p>
+    </div>,
+    // Question 14
+    <div>
+        <p>
+            Q9. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work</u>?
+        </p>
+        <p>
+        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+        </p>
+    </div>,
     // Question 8
     <div>
         <p>
-            Q8. How comfortable are you discussing details about your personal life with these individuals
+            Q10. How comfortable are you discussing details about your personal life with these individuals
         </p>
         <p>
-            FClick and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 9
     <div>
         <p>
-            Q9. Is there anyone you would like more technical support from?
+            Q11. Is there anyone you would like more technical support from?
         </p>
         <p>
             You can do this by clicking and dragging relevant individuals into the box. If you are unsure you can leave individuals outside the boxes.
@@ -278,7 +295,7 @@ export const SURVEY_QUESTIONS = [
     // Question 10
     <div>
         <p>
-            Q9. How comfortable are you providing support to anyone below who wishes to discuss details about <u>their personal life</u> with you?
+            Q11. How comfortable are you providing support to anyone below who wishes to discuss details about <u>their personal life</u> with you?
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -287,7 +304,7 @@ export const SURVEY_QUESTIONS = [
     // Question 11
     <div>
         <p>
-            Q10. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
+            Q12. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
         </p>
         <p>
             <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
@@ -299,7 +316,7 @@ export const SURVEY_QUESTIONS = [
     // Question 12
     <div>
         <p>
-            Q11. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
+            Q13. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
         </p>
         <p>
             <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
@@ -308,24 +325,7 @@ export const SURVEY_QUESTIONS = [
         Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
-    // Question 13
-    <div>
-        <p>
-            Q12. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work</u>?
-        </p>
-        <p>
-        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
-        </p>
-    </div>,
-    // Question 14
-    <div>
-        <p>
-            Q13. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work</u>?
-        </p>
-        <p>
-        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
-        </p>
-    </div>,
+
     // Question 15
     <>
         <div>
