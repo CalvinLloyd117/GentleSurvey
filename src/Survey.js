@@ -1116,7 +1116,7 @@ class Survey extends Component
                       route={"/Question_6"}
                       prevNodes={this.prevNodes}
                       // counter={this.determineCounterReturn(filterNodes(this.state.nodes, 'academic', "academic"), "academicSubCategory", "")}
-                      counter={this.determineCounterReturn(this.state.nodes, 'academic', "")}
+                      counter={this.determineCounterReturn(this.state.nodes.slice(1), "academicSubCategory", "")}
                       links={[]}
                       categories={ACADEMIC_SUBCATEGORIES}
                       foci={this.state.foci.slice(1)}
@@ -1262,8 +1262,8 @@ class Survey extends Component
                   />
                 } />
 
-                                {/* Question 12: Is there anyone below that you feel comfortable talking with about personal, non-academic matters? */}
-                                <Route exact path="/Question_8" component={
+                  {/* Question 12: Is there anyone below that you feel comfortable talking with about personal, non-academic matters? */}
+                  <Route exact path="/Question_8" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
