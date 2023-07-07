@@ -902,17 +902,17 @@ class Survey extends Component
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 8" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_8">
-                    Q8. Is There Anyone You Feel Comfortable Talking With About Personal Non-Academic Matters?
+                    Q8. Comfort Level Discussing Your Personal Life With Others
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 9" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_9">
-                    Q9. Do You Provide Support To Help Others With Personal Non-Academic Matters?
+                    Q9. Comfort Level Listening To Others Discuss Their Personal Life With You
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 10" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_10">
-                    Q10. Comfort Level Discussing Your Personal Life With Others
+                    Q10. Does Anyone Below Provide You With Academic Support?
                   </NavLink>
                 </NavItem>
                 {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 9" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
@@ -922,17 +922,17 @@ class Survey extends Component
                 </NavItem> */}
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 11" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_11">
-                    Q11. Do You Provide Support To Individuals About Personal Failure, Disappointment, or Struggle in Their Academic Work?
+                    Q11. Do You Provide Academic Support To Anyone Below?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 12" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_12">
-                    Q12. Does Anyone Below Provide Or Would Be Willing To Provide Academic Support To You?
+                    Q12. Does Anyone Provide Support To You With Academic Struggle?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 13" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_13">
-                    Q13. Do You Provide Or Would Be Willing To Provide Academic Support To Anyone Below?
+                    Q13. Do You Provide Support To Others With Their Academic Struggle?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 14" : "Please add " + MIN_ALTERS + " individuals to access this question."}>

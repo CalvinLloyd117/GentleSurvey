@@ -259,7 +259,7 @@ export const SURVEY_QUESTIONS = [
     // Question 13
     <div>
         <p>
-            Q8. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work</u>?
+            Q8. How comfortable are you discussing details about your <u>personal life</u> with these individuals?
         </p>
         <p>
         Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -268,7 +268,7 @@ export const SURVEY_QUESTIONS = [
     // Question 14
     <div>
         <p>
-            Q9. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work</u>?
+            Q9. How comfortable are you listening to anyone below who wishes to discuss details about <u>their personal life</u> with you?
         </p>
         <p>
         Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -277,7 +277,10 @@ export const SURVEY_QUESTIONS = [
     // Question 8
     <div>
         <p>
-            Q10. How comfortable are you discussing details about your personal life with these individuals
+            Q10. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
+        </p>
+        <p>
+        <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -295,7 +298,10 @@ export const SURVEY_QUESTIONS = [
     // Question 10
     <div>
         <p>
-            Q11. How comfortable are you providing support to anyone below who wishes to discuss details about <u>their personal life</u> with you?
+            Q11. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
+        </p>
+        <p>
+            <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -304,10 +310,7 @@ export const SURVEY_QUESTIONS = [
     // Question 11
     <div>
         <p>
-            Q12. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
-        </p>
-        <p>
-            <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+            Q12. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work?</u>
         </p>
         <p>
         Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -316,10 +319,7 @@ export const SURVEY_QUESTIONS = [
     // Question 12
     <div>
         <p>
-            Q13. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
-        </p>
-        <p>
-            <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+            Q13. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work?</u>
         </p>
         <p>
         Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -683,8 +683,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -693,8 +693,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Somewhat comfortable:",
-            value: "somewhat comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -703,8 +703,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -716,8 +716,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -726,8 +726,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Somewhat comfortable:",
-            value: "somewhat comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -735,8 +735,8 @@ export const PROVIDES_ME_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -781,8 +781,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -791,8 +791,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Somewhat comfortable:",
-            value: "somewhat comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -801,8 +801,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -814,8 +814,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "Very comfortable:",
-            value: "very comfortable",
+            text: "A lot of academic support:",
+            value: "a lot of support",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -824,8 +824,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Somewhat comfortable:",
-            value: "somewhat comfortable",
+            text: "Some academic support:",
+            value: "some support",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -833,8 +833,8 @@ export const I_PROVIDE_TECHNICAL_SUPPORT = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "Not comfortable:",
-            value: "not comfortable",
+            text: "No academic support:",
+            value: "no support",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -849,8 +849,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of academic support:",
-            value: "a lot of support",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -859,8 +859,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Some academic support:",
-            value: "some support",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -869,8 +869,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No academic support:",
-            value: "no support",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -882,8 +882,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of academic support:",
-            value: "a lot of support",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -892,8 +892,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Some academic support:",
-            value: "some support",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -901,8 +901,8 @@ export const PROVIDES_ME_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No academic support:",
-            value: "no support",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -917,8 +917,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of academic support:",
-            value: "a lot of support",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -927,8 +927,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Some academic support:",
-            value: "some support",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: ((SVG_WIDTH / 3) + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -937,8 +937,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No academic support:",
-            value: "no support",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: ((SVG_WIDTH / 3) * 2 + 15),
             y: (window.innerHeight * 0.63 - window.innerHeight * 0.17 - 30),
@@ -950,8 +950,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
     [
         {
             key: 0,
-            text: "A lot of academic support:",
-            value: "a lot of support",
+            text: "Very comfortable:",
+            value: "very comfortable",
             color: BOX_COLORS[0],
             x: 15,
             y: (window.innerHeight * 0.9 - 250 - window.innerHeight * 0.20),
@@ -960,8 +960,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 1,
-            text: "Some academic support:",
-            value: "some support",
+            text: "Somewhat comfortable:",
+            value: "somewhat comfortable",
             color: BOX_COLORS[1],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
@@ -969,8 +969,8 @@ export const I_PROVIDE_SUPPORT_ACADEMIC = (window.innerWidth > 700 ?
         },
         {
             key: 2,
-            text: "No academic support:",
-            value: "no support",
+            text: "Not comfortable:",
+            value: "not comfortable",
             color: BOX_COLORS[2],
             x: 15,
             y: (window.innerHeight * 0.9 - 10 - window.innerHeight * 0.20),
