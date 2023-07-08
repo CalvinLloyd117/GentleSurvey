@@ -286,7 +286,8 @@ class Graph extends Component
       .attr("cy", (d) => d.y)
       .attr("name", (d) => d.name)
       .attr("id", (d) => d.key)
-      .attr("transform", (d) => "translate(" + d.x + "," + d.y + ")");
+      .attr("transform", (d) => "translate(" + d.x + "," + d.y + ")")
+      .attr("class", (d) => d.key === 0 ? "hiddenNode" : "node"); //hide the You node
 
     v3d.selectAll(".node").on("click", () => this.nodeClicked(this.props))
     // {

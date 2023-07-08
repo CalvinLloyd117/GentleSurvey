@@ -37,6 +37,37 @@ class NodeComponent extends Component
     this.setState(this.state);
   }
 
+  renderNextButton()
+  {
+    if (this.props.finalQuestion === true)
+    {
+      return this.props.route ? <NavLink exact to={this.props.route} onClick={() => this.transferCallBack}>
+        <button id="confirm_next">Confirm & Finish</button>
+      </NavLink> : <div />
+    }
+    else
+    {
+      return this.props.route ? <NavLink exact to={this.props.route} onClick={() => this.transferCallBack}>
+        <button id="confirm_next">Confirm & Next</button>
+      </NavLink> : <div />
+    }
+  }
+
+  handleDeselectCurrentNode()
+  {
+    var node0 = document.getElementById("0")
+    console.log("Deselecting current node", node0)
+    this.props.resetSourceCallback()
+  }
+
+  renderDeselectButton()
+  {
+    if (this.props.finalQuestion)
+    {
+      return <button style={{ marginBottom: "50px", marginTop: "0px" }} className={"modifyButton"} onClick={() => this.handleDeselectCurrentNode()}>Deselect Current Node</button>
+    }
+  }
+
   render()
   {
     return (
@@ -63,9 +94,11 @@ class NodeComponent extends Component
             extraHeight={this.props.extraHeight}
           />
           <div className="usrInput">
-            {this.props.route ? <NavLink exact to={this.props.route} onClick={() => this.transferCallBack}>
+            {this.renderNextButton()}
+            {this.renderDeselectButton()}
+            {/* {this.props.route ? <NavLink exact to={this.props.route} onClick={() => this.transferCallBack}>
               <button id="confirm_next">Confirm & Next</button>
-            </NavLink> : <div />}
+            </NavLink> : <div />} */}
           </div>
         </div>
       </HashRouter>

@@ -744,6 +744,11 @@ class Survey extends Component
     }
   }
 
+  resetSource = () =>
+  {
+    this.setState({ source: -1, lastClickedNode: 0 });
+  }
+
   /*************************************************************************
    * Callback used for determining the final placement of a node after being 
    * dragged
@@ -1262,8 +1267,8 @@ class Survey extends Component
                   />
                 } />
 
-                  {/* Question 12: Is there anyone below that you feel comfortable talking with about personal, non-academic matters? */}
-                  <Route exact path="/Question_8" component={
+                {/* Question 12: Is there anyone below that you feel comfortable talking with about personal, non-academic matters? */}
+                <Route exact path="/Question_8" component={
                   () => <NodeComponent fixed={1}
                     nodes={this.state.nodes.slice(1).map((node, i) => (
                       {
@@ -1754,7 +1759,10 @@ class Survey extends Component
                     collectHistory={this.collectHistory.bind(this)}
                     textDescription={SURVEY_QUESTIONS[18]}
                     extraHeight={true}
-                    transferCallBack={this.transferData.bind(this)} />
+                    transferCallBack={this.transferData.bind(this)}
+                    finalQuestion={true}
+                    resetSourceCallback={this.resetSource.bind(this)}
+                  />
 
                     :
 
@@ -1798,6 +1806,8 @@ class Survey extends Component
                       textDescription={SURVEY_QUESTIONS[18]}
                       transferCallBack={this.transferData.bind(this)}
                       extraHeight={true}
+                      finalQuestion={true}
+                      resetSourceCallback={this.resetSource.bind(this)}
                     />
                   )} />
 

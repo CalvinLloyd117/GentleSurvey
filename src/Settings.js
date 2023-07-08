@@ -73,7 +73,7 @@ export const COLLABORATION_SETTINGS = {
     },
     none: {
         name: "no",
-        color: "grey"
+        color: "#acacac"
     }
 }
 
@@ -84,7 +84,7 @@ export const IS_LABMEMBER_SETTINGS = {
     },
     notLabMember: {
         name: "no",
-        color: "grey"
+        color: "#acacac"
     }
 }
 
@@ -103,7 +103,7 @@ export const WOULD_ANSWER_SIMILAR_TO_ME_SETTINGS = {
     },
     noResponse: {
         name: "NA",
-        color: "grey"
+        color: "#acacac"
     }
 }
 
@@ -118,7 +118,7 @@ export const IS_DIFFICULT_TO_INTERACT_WITH = {
     },
     noResponse: {
         name: "NA",
-        color: "grey"
+        color: "#acacac"
     }
 }
 
@@ -160,10 +160,10 @@ export const SURVEY_QUESTIONS = [
             Q1. Name 20 individuals that you interact with most frequently as a student or post-doctoral fellow. Think of individuals you interact with while conducting your research (e.g., field or lab work, lab meetings, reading clubs, seminars, classes, clubs, etc). These individuals might include supervisor(s), committee members, lab members, fellow students/classmates, summer students, professors, instructors, teaching assistants, technicians, lab managers, staff members, professional scientists, or others.
         </p>
         <p>
-        *You should be able to recognize all these individuals by face or name, and they should recognize you by face or name via in person or online interactions.
+            *You should be able to recognize all these individuals by face or name, and they should recognize you by face or name via in person or online interactions.
         </p>
         <p>
-        If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard or click the Modify Selected Node button..
+            If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard or click the Modify Selected Node button.
         </p>
     </div>,
     // Question 2 Instructions (appearing in text-box)
@@ -190,7 +190,7 @@ export const SURVEY_QUESTIONS = [
             Q3. Do your best to give an approximate age category for each individual.
         </p>
         <p>
-        You can do this by clicking an individual and selecting an age bracket. If you want to remove a category from an individual, simply click them and select the option again to remove it.
+            You can do this by clicking an individual and selecting an age bracket. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
     // Question 4 Instructions
@@ -199,7 +199,7 @@ export const SURVEY_QUESTIONS = [
             Q4. What is each individual's cultural background?
         </p>
         <p>
-        You can do this by clicking an individual and selecting the appropriate cultural category. <u>You can select multiple options</u> for an individual by clicking them and selecting an additional category. If you want to remove a category from an individual, simply click them and select the option again to remove it.
+            You can do this by clicking an individual and selecting the appropriate cultural category. <u>You can select multiple options</u> for an individual by clicking them and selecting an additional category. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
     // Question 5a Instructions
@@ -217,7 +217,7 @@ export const SURVEY_QUESTIONS = [
             Q5. Which category best describes each individual?
         </p>
         <p>
-        You can do this by clicking an individual and then selecting the appropriate position below. If you want to remove a category from an individual, simply click them and select the option again to remove it.
+            You can do this by clicking an individual and then selecting the appropriate position below. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
     //Question 5c Instructions message
@@ -262,7 +262,7 @@ export const SURVEY_QUESTIONS = [
             Q8. How comfortable are you discussing details about your <u>personal life</u> with these individuals?
         </p>
         <p>
-        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 14
@@ -271,7 +271,7 @@ export const SURVEY_QUESTIONS = [
             Q9. How comfortable are you listening to anyone below who wishes to discuss details about <u>their personal life</u> with you?
         </p>
         <p>
-        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 8
@@ -280,7 +280,7 @@ export const SURVEY_QUESTIONS = [
             Q10. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
         </p>
         <p>
-        <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+            <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -313,7 +313,7 @@ export const SURVEY_QUESTIONS = [
             Q12. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work?</u>
         </p>
         <p>
-        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
     // Question 12
@@ -322,7 +322,7 @@ export const SURVEY_QUESTIONS = [
             Q13. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work?</u>
         </p>
         <p>
-        Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
+            Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
         </p>
     </div>,
 
@@ -364,7 +364,7 @@ export const SURVEY_QUESTIONS = [
     // Question 17
     <div>
         <p>
-           Q16. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+            Q16. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
             Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for the current selection. <u>Click the green dot</u> to cancel your current selection. Take your time to ensure the most complete network.
@@ -406,7 +406,7 @@ export function returnTemplateNode(counter, name)
         shouldFloat: false,
         // Values for the purposes of data collection.
         // Name belongs in both locations, but I have chosen to leave it as a control value.
-        color: "grey",
+        color: "#acacac",
         sex: "",
         age: "",
         culture: [],
@@ -415,9 +415,9 @@ export function returnTemplateNode(counter, name)
         academicSubCategory: "",
         nonAcademicSubCategory: "",
         isLabMember: -1,
-        labMemberColor: "grey",
+        labMemberColor: "#acacac",
         collaboration: -1,
-        collaborationColor: "grey",
+        collaborationColor: "#acacac",
         providesMeSupport_Technical: -1,
         iWouldLikeMoreTechnicalSupport: -1,
         iProvideSupport_Technical: -1,
@@ -426,9 +426,9 @@ export function returnTemplateNode(counter, name)
         iAmComfortable_Personal_NonAcademic: -1,
         iProvideSupport_Personal_NonAcademic: -1,
         difficultToInteractWith: -1,
-        difficultToInteractWithColor: "grey",
+        difficultToInteractWithColor: "#acacac",
         wouldAnswerSimilarToMe: -1,
-        wouldAnswerSimilarToMeColor: "grey",
+        wouldAnswerSimilarToMeColor: "#acacac",
         categoryColor: "white",
         border: "#FFFFFF"
     };
@@ -458,6 +458,8 @@ export function returnYouTemplate()
         float: false,
         link: false,
         shouldFloat: false
+
+
     }
 }
 
