@@ -259,7 +259,7 @@ export const SURVEY_QUESTIONS = [
     // Question 13
     <div>
         <p>
-            Q8. How comfortable are you discussing details about your <u>personal life</u> with these individuals?
+            Q8. How comfortable are you discussing details about <u>your personal life</u> with these individuals?
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -330,10 +330,10 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q14. Do you find it difficult to interact with anyone below?
+                Q14. Do you find it difficult to interact with anyone below? 
             </p>
             <p>
-                Click them until their color matches the legend on the right.
+                If so, click those individuals until their color matches the legend on the right.
             </p>
         </div>
         <div className="legend">
@@ -367,7 +367,7 @@ export const SURVEY_QUESTIONS = [
             Q16. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
-            Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for the current selection. <u>Click the green dot</u> to cancel your current selection. Take your time to ensure the most complete network.
+            Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for the current selection. <u>Click the 'Deselect Current Node'</u> button to cancel your current selection.
         </p>
     </div>
 ];
