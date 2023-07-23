@@ -179,8 +179,8 @@ export const SURVEY_QUESTIONS = [
 
         <div className="legend">
             <h3>Legend</h3>
-            <div className="legendNode" style={{ backgroundColor: GENDER_SETTINGS.female.color }}><p>Female</p></div>
-            <div className="legendNode" style={{ backgroundColor: GENDER_SETTINGS.male.color }}><p>Male</p></div>
+            <div className="legendNode" style={{ backgroundColor: GENDER_SETTINGS.female.color }}><p>Woman</p></div>
+            <div className="legendNode" style={{ backgroundColor: GENDER_SETTINGS.male.color }}><p>Man</p></div>
             <div className="legendNode" style={{ backgroundColor: GENDER_SETTINGS.other.color }}><p>Other</p></div>
         </div>
     </>,
@@ -196,10 +196,10 @@ export const SURVEY_QUESTIONS = [
     // Question 4 Instructions
     <div>
         <p>
-            Q4. What is each individual's cultural background?
+            Q4. In our society, people are often described by their race or racial background. These are not based in science, but our race may influence the way we are treated by individuals and institutions, and this may affect our well-being. Which category(ies) best describes the individuals below?
         </p>
         <p>
-            You can do this by clicking an individual and selecting the appropriate cultural category. <u>You can select multiple options</u> for an individual by clicking them and selecting an additional category. If you want to remove a category from an individual, simply click them and select the option again to remove it.
+        You can do this by clicking an individual and selecting the appropriate category(ies). You must click the individual every time you want to add an additional category. If you want to remove a category, simply click the individual and select the option again to remove.
         </p>
     </div>,
     // Question 5a Instructions
@@ -517,17 +517,15 @@ export const AGE_CATEGORIES = [
 ];
 
 export const CULTURAL_CATEGORIES = [
-    { key: 0, text: "African", color: "#FFE699" },
-    { key: 1, text: "South East Asian", color: "#FFE699" },
-    { key: 2, text: "European", color: "#FFE699" },
-    { key: 3, text: "First Nations or Indigenous", color: "#FFE699" },
-    { key: 4, text: "East Asian", color: "#FFE699" },
-    { key: 5, text: "Latin, Central, and South American", color: "#FFE699" },
-    { key: 6, text: "South Asian", color: "#FFE699" },
-    { key: 7, text: "Middle Eastern", color: "#FFE699" },
-    { key: 8, text: "Other", color: "#FFE699" },
-    { key: 9, text: "Unsure", color: "#FFE699" }
-
+    { key: 0, text: "Black", color: "#FFE699" },
+    { key: 1, text: "East Asian", color: "#FFE699" },
+    { key: 2, text: "Indigenous (First Nations, Inuk/Inuit, Métis)", color: "#FFE699" },
+    { key: 3, text: "Latin American", color: "#FFE699" },
+    { key: 4, text: "Middle Eastern", color: "#FFE699" },
+    { key: 5, text: "South Asian", color: "#FFE699" },
+    { key: 6, text: "Southeast Asian", color: "#FFE699" },
+    { key: 7, text: "White", color: "#FFE699" },
+    { key: 8, text: "Another race, I'm not sure", color: "#FFE699" }
 ];
 
 export const NONACADEMIC_SUBCATEGORIES = [
