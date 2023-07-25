@@ -525,7 +525,8 @@ export const CULTURAL_CATEGORIES = [
     { key: 5, text: "South Asian", color: "#FFE699" },
     { key: 6, text: "Southeast Asian", color: "#FFE699" },
     { key: 7, text: "White", color: "#FFE699" },
-    { key: 8, text: "Another race, I'm not sure", color: "#FFE699" }
+    { key: 8, text: "Another race", color: "#FFE699" },
+    { key: 9, text: "I'm not sure", color: "#FFE699" }
 ];
 
 export const NONACADEMIC_SUBCATEGORIES = [
