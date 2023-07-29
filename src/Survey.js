@@ -877,7 +877,7 @@ class Survey extends Component
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 4" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_4">
-                    Q4. Assign Individual's Cultural Background
+                    Q4. Assign Individual's Racial Background
                   </NavLink>
                 </NavItem>
                 {/* <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 5a" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
@@ -947,7 +947,7 @@ class Survey extends Component
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 15" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
                   <NavLink className={this.state.nodes.length > MIN_ALTERS ? "nav-link" : "nav-link unavailable"} exact to="/Question_15">
-                    Q15. Who Do You Think Would Closely Match Your Responses To This Survey?
+                    Q15. How Close Are You To These Individuals?
                   </NavLink>
                 </NavItem>
                 <NavItem title={this.state.nodes.length > MIN_ALTERS ? "Question 16" : "Please add " + MIN_ALTERS + " individuals to access this question."}>
