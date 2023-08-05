@@ -380,3 +380,13 @@ p {
     padding: 15px;
   }
 }
+
+
+#linkdisplaybox{
+  display:inline-flex;
+  margin-top: 5px;
+}
+
+#linknumber{
+  color:#030202
+}

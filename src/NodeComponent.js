@@ -16,6 +16,7 @@ class NodeComponent extends Component
   {
     super(props);
     this.state = { counter: 0 };
+    this.linkcounter = 0;
   }
 
   /*************************************************************************
@@ -60,6 +61,19 @@ class NodeComponent extends Component
     this.props.resetSourceCallback()
   }
 
+  renderEdgeCounter(){
+    if (this.props.finalQuestion){
+      if (document.getElementsByClassName("link").length != 0){
+         this.linkcounter = document.getElementsByClassName("link").length
+         console.log("LINKCOUNTER", this.linkcounter)
+      }
+      return <div id="linkdisplaybox">
+              <p id="linknumber"> Number of Edges: {this.linkcounter}</p>
+              </div>
+      
+    }
+  }
+  
   renderDeselectButton()
   {
     if (this.props.finalQuestion)
@@ -96,6 +110,7 @@ class NodeComponent extends Component
           <div className="usrInput">
             {this.renderNextButton()}
             {this.renderDeselectButton()}
+            {this.renderEdgeCounter()}
             {/* {this.props.route ? <NavLink exact to={this.props.route} onClick={() => this.transferCallBack}>
               <button id="confirm_next">Confirm & Next</button>
             </NavLink> : <div />} */}

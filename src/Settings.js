@@ -166,6 +166,7 @@ export const SURVEY_QUESTIONS = [
             If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard or click the Modify Selected Node button.
         </p>
     </div>,
+
     // Question 2 Instructions (appearing in text-box)
     <>
         <div>
@@ -184,6 +185,7 @@ export const SURVEY_QUESTIONS = [
             <div className="legendNode" style={{ backgroundColor: GENDER_SETTINGS.other.color }}><p>Other</p></div>
         </div>
     </>,
+
     // Question 3 Instructions
     <div>
         <p>
@@ -193,6 +195,7 @@ export const SURVEY_QUESTIONS = [
             You can do this by clicking an individual and selecting an age bracket. If you want to remove a category from an individual, simply click them and select the option again to remove it.
         </p>
     </div>,
+
     // Question 4 Instructions
     <div>
         <p>
@@ -257,6 +260,7 @@ export const SURVEY_QUESTIONS = [
         </div>
     </>,
     // Question 13
+    //NOTE: OLD
     <div>
         <p>
             Q8. How comfortable are you discussing details about <u>your personal life</u> with these individuals?
@@ -266,6 +270,7 @@ export const SURVEY_QUESTIONS = [
         </p>
     </div>,
     // Question 14
+    //NOTE: OLD
     <div>
         <p>
             Q9. How comfortable are you listening to anyone below who wishes to discuss details about <u>their personal life</u> with you?
@@ -275,9 +280,10 @@ export const SURVEY_QUESTIONS = [
         </p>
     </div>,
     // Question 8
+
     <div>
         <p>
-            Q10. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
+            Q8. Does anyone below provide or would be willing to provide <u>academic support</u> to you?
         </p>
         <p>
             <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
@@ -289,7 +295,7 @@ export const SURVEY_QUESTIONS = [
     // Question 9
     <div>
         <p>
-            Q11. Is there anyone you would like more technical support from?
+            Q9. Is there anyone you would like more technical support from?
         </p>
         <p>
             You can do this by clicking and dragging relevant individuals into the box. If you are unsure you can leave individuals outside the boxes.
@@ -298,7 +304,7 @@ export const SURVEY_QUESTIONS = [
     // Question 10
     <div>
         <p>
-            Q11. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
+            Q9. Do you provide or would be willing to provide <u>academic support</u> to anyone below?
         </p>
         <p>
             <u>Academic support</u> might include things like research collaboration, offering training that develops your research skills, help with study design, field or lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
@@ -310,7 +316,7 @@ export const SURVEY_QUESTIONS = [
     // Question 11
     <div>
         <p>
-            Q12. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work?</u>
+            Q10. Do you feel comfortable talking with anyone below about <u>failure, disappointment, or struggle in your academic work?</u>
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -319,7 +325,7 @@ export const SURVEY_QUESTIONS = [
     // Question 12
     <div>
         <p>
-            Q13. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work?</u>
+            Q11. Do you feel comfortable providing support to anyone below about <u>failure, disappointment, or struggle in their academic work?</u>
         </p>
         <p>
             Click and drag individuals into the appropriate box. If you are unsure you can leave individuals outside the boxes.
@@ -330,7 +336,7 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q14. Do you find it difficult to interact with anyone below? 
+                Q12. Do you find it difficult to interact with anyone below? 
             </p>
             <p>
                 If so, click those individuals until their color matches the legend on the right.
@@ -347,7 +353,7 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q15. How close are you to these individuals?
+                Q13. How close are you to these individuals?
             </p>
             <p>
                 Click individuals until their colour matches the legend on the right. If you are unsure you can leave the individual unchanged.
@@ -364,7 +370,7 @@ export const SURVEY_QUESTIONS = [
     // Question 17
     <div>
         <p>
-            Q16. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+            Q14. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
             Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for the current selection. <u>Click the 'Deselect Current Node'</u> button to cancel your current selection.
