@@ -68,7 +68,7 @@ class NodeComponent extends Component
          console.log("LINKCOUNTER", this.linkcounter)
       }
       return <div id="linkdisplaybox">
-              <p id="linknumber"> Number of Edges: {this.linkcounter}</p>
+              <p id="linknumber"> Number of Links: {this.linkcounter}</p>
               </div>
       
     }
