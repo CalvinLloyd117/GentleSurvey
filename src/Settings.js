@@ -124,7 +124,7 @@ export const IS_DIFFICULT_TO_INTERACT_WITH = {
 
 export const INTRODUCTION_TEXT = <div className="introduction">
     <h3>Thank you for participating in this research! Our work would not be possible without your time and thoughtful responses.</h3>
-    <p>In this survey, you will construct your own personal social network! We are interested in who you interact with most frequently in your current academic role and the types of support you might receive from these individuals.</p>
+    <p>This survey contains <u>14 questions</u> that will help you construct your own personal social network! We are interested in who you interact with most frequently in your current academic role and the types of support you might receive from these individuals.</p>
     <p>Some instructions:</p>
     <ul>
         <li>
@@ -157,13 +157,13 @@ export const SURVEY_QUESTIONS = [
     // Question 1 Instructions (appearing in text-box)
     <div>
         <p>
-            Q1. Name 20 individuals that you interact with most frequently as a student or post-doctoral fellow. Think of individuals you interact with while conducting your research (e.g., field or lab work, lab meetings, reading clubs, seminars, classes, clubs, etc). These individuals might include supervisor(s), committee members, lab members, fellow students/classmates, summer students, professors, instructors, teaching assistants, technicians, lab managers, staff members, professional scientists, or others.
+        Q1. Excluding yourself, name 20 individuals that you interact with most frequently in your <u>current role</u> as a student or post-doctoral fellow. Think of individuals you interact with while conducting your research (e.g., field or lab work, lab meetings, reading clubs, seminars, classes, clubs, etc). These individuals might include supervisor(s), committee members, lab members, fellow students/classmates, summer students, professors, instructors, teaching assistants, technicians, lab managers, staff members, professional scientists, or others. 
         </p>
         <p>
-            *You should be able to recognize all these individuals by face or name, and they should recognize you by face or name via in person or online interactions.
+        *Name each person such that you can easily identify them later. Full names are not necessary. Hit ‘Confirm and Next’ after you’ve entered each individual name. If done correctly, each person will be visible on your screen in a small bubble. You should be able to recognize all these individuals by face or name, and they should recognize you by face or name via in person or online interactions.
         </p>
         <p>
-            If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard or click the Modify Selected Node button.
+        If you need to modify a node (rename or delete), you can click the node and press delete on the keyboard or click the Modify Selected Node button.
         </p>
     </div>,
 
@@ -336,10 +336,10 @@ export const SURVEY_QUESTIONS = [
     <>
         <div>
             <p>
-                Q12. Do you find it difficult to interact with anyone below? 
+                Q12. Do you find it difficult to interact with anyone below?
             </p>
             <p>
-                If so, click those individuals until their color matches the legend on the right.
+                If no, leave the individuals unchanged. If yes, click those individuals until their color matches the legend on the right.
             </p>
         </div>
         <div className="legend">
