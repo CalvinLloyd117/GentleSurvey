@@ -503,7 +503,7 @@ export const ACADEMIC_SUBCATEGORIES = [
     { key: 4, text: "Technician", color: "#F8CEB9" },
     { key: 5, text: "Instructor", color: "#F7C4BA" },
     { key: 6, text: "Professor", color: "#F6BBBB" },
-    { key: 7, text: "Professional - Scientist", color: "#fEB4E3" },
+    { key: 7, text: "Professional - Scientist (i.e., Scientist working outside academia)", color: "#fEB4E3" },
     { key: 8, text: "Professional - other", color: "#F2BFEA" },
     { key: 9, text: "Other", color: "#F1B6EC" }
 
@@ -523,14 +523,14 @@ export const AGE_CATEGORIES = [
 ];
 
 export const CULTURAL_CATEGORIES = [
-    { key: 0, text: "Black", color: "#FFE699" },
-    { key: 1, text: "East Asian", color: "#FFE699" },
-    { key: 2, text: "Indigenous (First Nations, Inuk/Inuit, Métis)", color: "#FFE699" },
-    { key: 3, text: "Latin American", color: "#FFE699" },
-    { key: 4, text: "Middle Eastern", color: "#FFE699" },
-    { key: 5, text: "South Asian", color: "#FFE699" },
-    { key: 6, text: "Southeast Asian", color: "#FFE699" },
-    { key: 7, text: "White", color: "#FFE699" },
+    { key: 0, text: "Black (e.g., African, African Canadian, Afro-Caribbean descent)", color: "#FFE699" },
+    { key: 1, text: "East Asian (e.g., Chinese, Japanese, Korean, Taiwanese descent)", color: "#FFE699" },
+    { key: 2, text: "Indigenous (e.g., First Nations, Inuk/Inuit, Métis descent)", color: "#FFE699" },
+    { key: 3, text: "Latin American (e.g., Hispanic or Latin American descent)", color: "#FFE699" },
+    { key: 4, text: "Middle Eastern (e.g., Arab, Persian, West Asian descent)", color: "#FFE699" },
+    { key: 5, text: "South Asian (e.g., Bangladeshi, Indian, Pakistani, Sri Lankan descent)", color: "#FFE699" },
+    { key: 6, text: "Southeast Asian (e.g., Filipino, Thai, Vietnamese descent)", color: "#FFE699" },
+    { key: 7, text: "White (e.g., European descent)", color: "#FFE699" },
     { key: 8, text: "Another race", color: "#FFE699" },
     { key: 9, text: "I'm not sure", color: "#FFE699" }
 ];
