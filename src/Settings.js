@@ -370,10 +370,10 @@ export const SURVEY_QUESTIONS = [
     // Question 17
     <div>
         <p>
-            Q14. Excluding yourself, now link individuals that <u>provide academic support to each other</u>. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
+            Q14. Excluding yourself, now make <u>20 links</u> between individuals that provide the most academic support to each other. For example, collaborating on research, supervising students together, help with study design, field/lab work, writing, reading, class work, coding, data management, statistics, or other support related to research.
         </p>
         <p>
-            Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for the current selection. <u>Click the 'Deselect Current Node'</u> button to cancel your current selection.
+        Create a link (or unlink) by <u>clicking the center</u> of an individual, and then <u>clicking the center</u> of another individual. Existing ties will turn red for your current selection. Look to the bottom left corner of your screen to keep track of the number of links you’ve made, or to click the 'Deselect Current Node' button to cancel your current selection. 
         </p>
     </div>
 ];
