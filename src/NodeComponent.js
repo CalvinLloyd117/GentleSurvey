@@ -63,7 +63,7 @@ class NodeComponent extends Component
 
   renderEdgeCounter(){
     if (this.props.finalQuestion){
-      if (document.getElementsByClassName("link").length != 0){
+      if (document.getElementsByClassName("link").length !== 0){
          this.linkcounter = document.getElementsByClassName("link").length
          console.log("LINKCOUNTER", this.linkcounter)
       }
