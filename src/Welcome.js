@@ -4,6 +4,7 @@ import "./css/bootstrap.css";
 import "./css/style.css";
 import Info from "./Info.js";
 import Login from "./Login"
+import Consent from "./Consent"
 import Register from "./Register"
 import { Route, HashRouter } from 'react-router-dom'
 import $ from "jquery";
@@ -15,8 +16,21 @@ class Welcome extends Component
     {
         super(props);
         this.state = { id: "", consent: false, password: "", password_h: "", surveyReady: false, auth: false, data: null, nodes: [], links: [], foci: [] };
+        this.updateConsent = this.updateConsent.bind(this);
+        this.getConsent = this.getConsent.bind(this);
         // this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    updateConsent = (newValue) => {
+        console.log("Updating consent from", this.state.consent, " To: ", newValue)
+        // this.setState({ consent: newValue });
+        this.state.consent = newValue
+        console.log(this.state.consent)
+        
+    }
+    getConsent = () =>{
+        return this.state.consent
     }
 
     componentDidMount()
@@ -199,15 +213,21 @@ class Welcome extends Component
         {
             return <HashRouter>
                 {/* <Switch> */}
+
+
+                {/* <Switch> */}
                 <Route exact path="/" render={(props) => (
-                    <Login handleLoginCallback={this.handleLoginCallback} />
+                    <Consent updateConsent={this.updateConsent} getConsent={this.getConsent}  />
+                )} />
+                <Route exact path="/Login" render={(props) => (
+                    <Login getConsent={this.getConsent} handleLoginCallback={this.handleLoginCallback} />
                 )} />
                 <Route exact path="/register" render={(props) => (
-                    <Register handleRegisterCallback={this.handleRegisterCallback} />
+                    <Register getConsent={this.getConsent} handleRegisterCallback={this.handleRegisterCallback} />
                 )} />
-                <Route exact path="/consent" render={(props) => (
+                {/* <Route exact path="/consent" render={(props) => (
                     <Info />
-                )} />
+                )} /> */}
             </HashRouter>
         }
     }

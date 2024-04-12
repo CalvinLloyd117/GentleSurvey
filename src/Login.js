@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 // import ReactDOM from "react-dom";
 import "./css/bootstrap.css";
 import "./css/style.css";
+import { Redirect } from 'react-router-dom';
 // import Info from "./Info.js";
 // import { INFORMATION } from "./Settings.js";
 // import $ from "jquery";
@@ -23,7 +24,7 @@ class Login extends Component
     constructor(props)
     {
         super(props);
-        this.state = { id: "", consent: false, password: "" };
+        this.state = { id: "",  password: "" };
     }
 
     /************************************************************************
@@ -47,12 +48,13 @@ class Login extends Component
     // * session is created and added to starage.
     // *************************************************************************/
     handleSubmit = (e) =>
-    {
+    {   
+        console.log("Logging in with consent:", this.props.getConsent())
         e.preventDefault()
-        if(this.state.consent === true)
+        if(this.props.getConsent() === true)
         {
             console.log("Submitting")
-            this.props.handleLoginCallback(this.state.id, this.state.password, this.state.consent)
+            this.props.handleLoginCallback(this.state.id, this.state.password, this.props.getConsent())
         }
         else{
             alert("Please provide consent by checking the box.")
@@ -61,8 +63,13 @@ class Login extends Component
 
     render()
     {
+        if (!this.props.getConsent()) {
+            return <Redirect to="/" />;
+          }
         return (
+
             <div className="container">
+                
                 <form onSubmit={this.handleSubmit} className="loginForm">
                     <h1>Login</h1>
                     <input
@@ -84,14 +91,14 @@ class Login extends Component
                         onChange={this.handleChange}
                         required
                     />
-                    <label style={{ textAlign: "left" }}>
+                    {/* <label style={{ textAlign: "left" }}>
                         I consent to my data being stored and confirm that I have read the <Link to="/consent">informed consent sheet</Link>.
                         <input
                             name="consent"
                             type="checkbox"
                             checked={this.state.consent}
                             onChange={this.handleChange} />
-                    </label>
+                    </label> */}
                     <input className="loginInput" value="Submit" type="submit" />
                     <p>New participant? Please <Link to="/register">register here</Link>.</p>
                 </form>
