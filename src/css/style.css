@@ -390,3 +390,40 @@ p {
 #linknumber{
   color:#030202
 }
+.ConsentPopup label{
+  color:#030202 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.ConsentPopup p{
+  color:#030202;
+  /* position: absolute;  */
+  padding-left: 20%;
+  padding-right: 20%;
+  top: 0;
+  bottom: 0; 
+  /* left: 15%; 
+  right: 15%; */
+   width: 100%; 
+   height: 100%; 
+}
+.ConsentPopup a {
+  color:#0c00ad !important;
+}
+
+.ulethLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ConsentPopup button{
+  width: 26.5% !important;
+}

@@ -5,6 +5,7 @@ import "./css/bootstrap.css";
 import "./css/style.css";
 import Info from "./Info.js";
 import { INFORMATION } from "./Settings.js";
+import { Redirect } from 'react-router-dom';
 
 class Welcome extends Component
 {
@@ -58,7 +59,7 @@ class Welcome extends Component
     {
          e.preventDefault();
         // Adding some password restriction rules.
-            if (this.state.consent === true)
+            if (this.props.getConsent() === true)
             {
                 console.log("Registering")
                 this.props.handleRegisterCallback(this.state.id, this.state.password, this.state.passwordConfirm, this.state.consent)
@@ -71,6 +72,9 @@ class Welcome extends Component
 
     render()
     {
+        if (!this.props.getConsent()) {
+            return <Redirect to="/" />;
+          }
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="loginForm">
@@ -105,15 +109,15 @@ class Welcome extends Component
                         required
                     />
                     <label style={{ textAlign: "left" }}>
-                        I consent to my data being stored and confirm that I have read the <a style={{ color: "blue", textDecoration: "underline" }} href="/consent">informed consent sheet</a>.
+                        I consent to my data being stored and confirm that I have read the <a style={{ color: "blue", textDecoration: "underline" }} href="/">informed consent sheet</a>.
                         <input
                             name="consent"
                             type="checkbox"
-                            checked={this.state.consent}
+                            checked={this.props.getConsent()}
                             onChange={this.handleChange} />
                     </label>
                     <input className="loginInput" type="submit" value="Complete Registration" />
-                    <p>Already a participant? Please <Link to="/">login</Link>.</p>
+                    <p>Already a participant? Please <Link to="/Login">login</Link>.</p>
                 </form>
             </div>
         );
