@@ -9,6 +9,12 @@ def load_json(filename=None):
     access information by using one of these keys, usually 'data' like load_json(filename)[userindex]['data']
 
     each node in user data contains a list of data accumulated through the questions
+
+    Instructions:
+
+    python convert_json.py -f gentle_data.json -o gentle_output
+
+    gentle_output has no extensions. The output will be gentle_output_Nodes.csv and gentle_output_Links.csv
     '''
     print(filename)
     data = [json.loads(line) for line in open(filename, 'r')]
